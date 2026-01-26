@@ -1,0 +1,360 @@
+Project InventorySystem {
+  orm:'eloquent'
+  database_type: 'PostgreSQL'
+  Note: 'Sistema de Inventario Robusto con preparación para POS y Facturación'
+}
+
+// ---------------------------------------------------------
+// 1. CATÁLOGOS Y DATOS MAESTROS
+// ---------------------------------------------------------
+
+Table users {
+  id unsignedbigint [primary key, increment]
+  name varchar(100) [not null]
+  email varchar(100) [not null]
+  email_verified_at timestamp [null]
+  password varchar(255) [not null]
+  created_at timestamp [not null]
+  updated_at timestamp [not null]
+  is_active boolean [default: true]
+
+  Note: 'Usuarios del sistema (Administradores, Cajeros, Bodegueros)'
+}
+
+Table warehouses {
+  id unsignedbigint [primary key, increment]
+  name varchar [not null]
+  address varchar(255) [not null]
+  created_at timestamp
+  updated_at timestamp 
+  is_active boolean [default: true]
+
+  Note: 'Bodegas físicas o Tiendas (Puntos de Venta)'
+}
+
+Table suppliers {
+  id unsignedbigint [primary key, increment]
+  business_name varchar(100) [not null]
+  number_tax_id varchar(50) [note: 'Número RUC']
+  contact_name varchar(100) [null]
+  email varchar(100) [null]
+  phone varchar(100) [not null]
+  address text(100) [null]
+  created_at timestamp 
+  updated_at timestamp
+}
+
+Table customers {
+  id unsignedbigint [primary key, increment]
+  names varchar(100) [not null]
+  first_surname varchar(50) [null]
+  second_surname varchar(50) [null]
+  number_tax_id varchar(50) [not null,note: 'DNI / RUC para facturación']
+  email varchar (100) [null]
+  phone varchar (50) [null]
+  address text (100) [null]
+  created_at timestamp
+  updated_at timestamp
+
+  Note: 'Clientes para ventas y facturación'
+}
+
+// ---------------------------------------------------------
+// 2. PRODUCTOS Y DEFINICIONES
+// ---------------------------------------------------------
+
+Table categories {
+  id unsignedbigint [primary key, increment]
+  name varchar(100)
+  parent_id unsignedbigint [note: 'Para subcategorías']
+}
+
+Table units_of_measure {
+  id unsignedbigint [primary key, increment]
+  name varchar(50) [note: 'Unidad, Kilogramo, Litro']
+  code varchar(10) [note: 'Ej: UND, KG, M, LTR']
+}
+
+Table brands {
+  id unsignedbigint [primary key, increment]
+  name varchar(50) [note: 'Toyota, Hyunday, Repsol, Pari']
+}
+
+Table products {
+  id unsignedbigint [primary key, increment]
+  sku varchar(50) [unique, not null, note: 'Código interno único']
+  barcode varchar(50) [note: 'Código EAN/UPC escaneable']
+  name varchar(100) [not null]
+  description varchar(255) [null]
+
+  brand_id unsignedbigint [null]
+  category_id unsignedbigint [not null]
+  unit_id unsignedbigint [not null]
+
+  // Precios y Costos promedios
+  net_price decimal(10,2) [note: 'Precio neto, sin impuestos']
+  average_cost decimal(15,4) [default: 0, note: 'Costo Promedio Ponderado Global (Referencial)']
+
+  
+  // Configuraciones
+  min_stock integer [default: 5, note: 'Punto de reorden']
+  is_inventoriable boolean [default: true, note: 'False para servicios']
+  tax_id unsignedbigint [not null , note: 'Referencia a la tabla taxes']
+  
+  created_at timestamp
+  deleted_at timestamp [note: 'Soft Delete']
+}
+
+// ---------------------------------------------------------
+// 3. STOCK (FOTO ACTUAL)
+// ---------------------------------------------------------
+
+Table product_warehouse {
+  id unsignedbigint [primary key, increment]
+  warehouse_id unsignedbigint
+  product_id unsignedbigint
+  current_stock decimal(10,2) [default: 0]
+  
+  Note: 'Tabla snapshot. Debe coincidir con la suma del Kardex'
+}
+
+// ---------------------------------------------------------
+// 4. KARDEX (HISTORIAL DE MOVIMIENTOS)
+// ---------------------------------------------------------
+
+Table movement_types {
+  id unsignedbigint [primary key, increment]
+  name varchar [note: 'Ej: Compra, Venta, Ajuste Entrada y Ajuste Salida']
+  action enum('input', 'output') [note: 'Define si suma o resta matemáticamente (input: suma, output: resta)']
+}
+
+Table kardex {
+  id unsignedbigint [primary key, increment]
+  date timestamp [note: 'Fecha de generación del movimiento']
+  
+  // Ubicación y Producto
+  warehouse_id unsignedbigint [note: 'Referencia a la tabla warehouses, id del warehouse donde ocurre la acción']
+  product_id unsignedbigint [note: 'Referencia a la tabla products, id del producto afectado']
+  movement_type_id unsignedbigint [note: 'Referencia a la tabla movement_types, define si es entrada o salida (+ o -)']
+  
+  // Polimorfismo (La clave del sistema)
+  related_doc_type varchar(100) [note: 'Almacena la ruta del modelo para una relación polimórfica (usando "ELOQUENT") Ej: "\App\PurchaseOrder" o "\App\SalesOrder"']
+  related_doc_id unsignedbigint [note: 'Referencia al id del registro en el modelo relacionado)']
+
+  // Valores matemáticos del movimiento
+  quantity decimal(10,2) [note: 'Cantidad movida (+ o -)']
+  unit_cost decimal(15,4) [note: 'Costo unitario por item al momento del registro, sin ninguna adición']
+  total_cost decimal(15,4) [note: 'quantity * unit_cost']
+  
+  // Saldos resultantes (Para auditoría rápida)
+  stock_balance decimal(10,2) [note: 'Stock despues del movimiento: stock anterior +/- quantity']
+  average_cost_balance decimal(15,4) [note: 'Nuevo Costo Promedio después del movimiento: (solo si es entrada(+) de inventario)']
+  
+  created_at timestamp [note: 'Fecha de creación del registro en la base de datos']
+  created_by unsignedbigint [note: 'Referencia a la tabla users,id del usuario que provocó el movimiento']
+
+  indexes {
+    (product_id, warehouse_id) [name: 'kardex_product_warehouse_idx']
+    (related_doc_type, related_doc_id) [name: 'kardex_polymorphic_idx']
+    date [name: 'kardex_date_idx']
+  }
+}
+
+// ---------------------------------------------------------
+// 5. DOCUMENTO DE SISTEMA: COMPRAS (ENTRADAS)
+// ---------------------------------------------------------
+
+Table purchase_orders {
+  id unsignedbigint [primary key, increment]
+  supplier_id unsignedbigint [note: 'Referencia a la tabla suppliers']
+  warehouse_id unsignedbigint [note: 'A dónde entra la mercancía']
+  date timestamp [note: 'Fecha de generación de la orden de compra'] 
+  status enum('draft', 'ordered', 'received', 'cancelled')
+  
+  supplier_invoice_number varchar [note: 'El folio de la factura del proveedor']
+  total_amount decimal(12,2) [note: 'Monto total de la orden de compra']
+  notes text [null, note: 'Notas adicionales sobre la orden de compra']
+  
+  created_by unsignedbigint [not null, note: 'Id de usuario que creó la orden de compra']
+  created_at timestamp [not null, note: 'Fecha de registro de la orden de compra en la base de datos']
+}
+
+Table purchase_items {
+  id unsignedbigint [primary key, increment]
+  purchase_order_id unsignedbigint [null, note: 'Referencia a la tabla purchase_orders']
+  product_id unsignedbigint [null,note: 'Referencia a la tabla products']
+  quantity decimal(10,2) [note: 'Cantidad de producto']
+
+  entered_price decimal(15,4) [note: 'Precio digitado por el usuario']
+  tax_included boolean [default:false, note: 'True si el precio incluye impuestos'] 
+  calculated_net_cost decimal(15,4) [note: 'Costo neto calculado (sin impuestos)'] 
+
+  total_item_net decimal(15,4) [note: 'calculated_net_cost * quantity']
+}
+
+Table purchase_item_tax {
+  id unsignedbigint [primary key, increment]
+  purchase_item_id unsignedbigint [note: 'Referencia a la tabla purchase_items'] 
+  tax_id unsignedbigint [note: 'Referencia a la tabla taxes'] 
+  
+  tax_rate decimal(5,2) [note: 'Copia de la tasa en el momento de la compra'] 
+  tax_amount decimal(15,4) [note: 'Monto de dinero de este impuesto para este item'] 
+
+  note: 'Tabla pivote para relación muchos a muchos entre las tablas purchase_items y taxes'
+
+}
+
+// ---------------------------------------------------------
+// 6. DOCUMENTO DE SISTEMA: VENTAS / POS (SALIDAS)
+// ---------------------------------------------------------
+
+Table sales_orders {
+  id unsignedbigint [primary key, increment]
+  customer_id unsignedbigint
+  warehouse_id unsignedbigint [note: 'De dónde sale la mercancía']
+  date timestamp
+  status enum('pending', 'completed', 'cancelled', 'returned')
+  
+  // Datos Financieros (Facturación)
+  subtotal decimal(12,2)
+  tax_amount decimal(12,2)  
+  total_amount decimal(12,2)
+  
+  invoice_series varchar(20) [note: 'Ej: F001']
+  invoice_number varchar(20) [note: 'Ej: 000045']
+  
+  created_by unsignedbigint [note: 'Id de usuario que realizó la venta']
+  
+  // Hitos de vida de la venta
+  created_at timestamp
+  cacelled_at timestamp [null, note: 'Fecha de cancelación de la venta']
+  paid_at timestamp [null, note:'Fecha de pago']
+  delivered_at timestamp
+}
+
+Table sales_items {
+  id unsignedbigint [primary key, increment]
+  sales_order_id unsignedbigint
+  product_id unsignedbigint
+  quantity decimal(10,2)
+  unit_price decimal(12,2) [note: 'Precio de venta al momento']
+  total_price decimal(12,2)
+  
+  // Importante para margen de ganancia
+  cost_at_moment decimal(15,4) [note: 'Se copia del average_cost del producto al vender']
+}
+
+// ---------------------------------------------------------
+// 7. DOCUMENTO DE SISTEMA: AJUSTES (INTERNOS)
+// ---------------------------------------------------------
+
+Table inventory_adjustments {
+  id unsignedbigint [primary key, increment]
+  warehouse_id unsignedbigint
+  reason varchar [note: 'Ej: Merma, Robo, Conteo Inicial']
+  date timestamp
+  status enum('draft', 'applied', 'cancelled')
+  created_by unsignedbigint
+  created_at timestamp
+}
+
+Table inventory_adjustment_items {
+  id unsignedbigint [primary key, increment]
+  adjustment_id unsignedbigint [note: 'Referencia a la tabla inventory_adjustments']
+  product_id unsignedbigint [note: 'Referencia a la tabla products']
+  current_stock decimal(10,2) [note: 'Stock antes del ajuste']
+  adjusted_quantity decimal(10,2) [note: 'Cantidad a sumar/restar']
+}
+
+// ---------------------------------------------------------
+// 8. IMPUESTOS
+// ---------------------------------------------------------
+Table taxes {
+  id unsignedbigint
+  name varchar(50) [not null, unique, note: 'IVA, IGV, GST'] 
+  rate decimal(5,2) [not null, note: 'Porcentaje del IGV, Ej: (18.00 = 18%)']
+  code varchar(10) [not null, unique, note: 'Ej: IVA21, IGV18']
+  is_fixed boolean [not null, default: false, note: 'True si es un monto fijo en lugar de un porcentaje']
+  is_active boolean [not null,default: true]
+  created_at timestamp [not null, note: 'Fecha de Creación']
+  updated_at timestamp [not null, note: 'Fecha de última actualización']
+}
+
+Table tax_product {
+  id unsignedbigint [primary key, increment]
+  product_id unsignedbigint [not null, note: 'Referencia a la tabla products']
+  tax_id unsignedbigint [not null, note: 'Referencia a la tabla taxes']
+
+  note: 'Tabla pivote para relación muchos a muchos entre productos e impuestos'
+}
+
+// ---------------------------------------------------------
+// 9. CATÁLOGOS CON CÓDIGO DE SUNAT (FACTURACIÓN ELECTRÓNICA)
+// ---------------------------------------------------------
+
+Table catalog_sunat_codes {
+  id unsignedbigint [primary key, increment]
+  catalog_sunat_id unsignedbigint [not null, note: 'Referencia a la tabla catalogs_sunat']
+  code varchar(20) [not null, unique, note: 'Código de tipo de documento SUNAT, Ej: 01, 03, 07, 08']
+  description varchar(255) [null, note: 'Descripción del tipo de documento SUNAT Ej: Factura, Boleta, Nota de Crédito']
+  is_active boolean [not null, default: true, note: 'Indica si el tipo de documento está activo para su uso']
+}
+
+Table catalogs_sunat {
+  id unsignedbigint [primary key, increment]
+  number varchar(10) [not null, note: 'Número del catálogo SUNAT, Ej: 01, 02, 03']
+  sunat_description varchar(255) [not null, note: 'Descripción del catálogo SUNAT']
+  description varchar(255) [not null, note: 'Descripción interna del catálogo']
+  is_active boolean [not null, default: true, note: 'Indica si el catálogo está activo para su uso']
+}
+
+
+
+
+// ---------------------------------------------------------
+// RELACIONES (FOREIGN KEYS)
+// ---------------------------------------------------------
+
+// Productos
+Ref: products.category_id > categories.id
+Ref: products.unit_id > units_of_measure.id
+Ref: categories.parent_id > categories.id
+Ref: products.brand_id > brands.id
+Ref: products.tax_id > taxes.id
+Ref: tax_product.product_id > products.id
+Ref: tax_product.tax_id > taxes.id
+
+// Stock Snapshot
+Ref: product_warehouse.product_id > products.id
+Ref: product_warehouse.warehouse_id > warehouses.id
+
+// Kardex
+Ref: kardex.product_id > products.id
+Ref: kardex.warehouse_id > warehouses.id
+Ref: kardex.movement_type_id > movement_types.id
+Ref: kardex.created_by > users.id
+
+// Compras
+Ref: purchase_orders.supplier_id > suppliers.id
+Ref: purchase_orders.warehouse_id > warehouses.id
+Ref: purchase_orders.created_by > users.id
+Ref: purchase_items.purchase_order_id > purchase_orders.id
+Ref: purchase_items.product_id > products.id
+Ref: purchase_items.id < purchase_item_tax.purchase_item_id
+Ref: purchase_item_tax.tax_id > taxes.id
+
+// Ventas
+Ref: sales_orders.customer_id > customers.id
+Ref: sales_orders.warehouse_id > warehouses.id
+Ref: sales_orders.created_by > users.id
+Ref: sales_items.sales_order_id > sales_orders.id
+Ref: sales_items.product_id > products.id
+
+// Ajustes
+Ref: inventory_adjustments.warehouse_id > warehouses.id
+Ref: inventory_adjustments.created_by > users.id
+Ref: inventory_adjustment_items.adjustment_id > inventory_adjustments.id
+Ref: inventory_adjustment_items.product_id > products.id
+
+// Catalogos SUNAT
+Ref: catalogs_sunat.id < catalog_sunat_codes.catalog_sunat_id

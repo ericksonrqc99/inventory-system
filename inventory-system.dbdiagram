@@ -1,0 +1,519 @@
+{
+  "version": "1.0.0",
+  "darkMode": true,
+  "gridEnabling": false,
+  "detailLevel": "All",
+  "tablePositions": [
+    {
+      "name": "users",
+      "schemaName": "public",
+      "x": 0,
+      "y": 50
+    },
+    {
+      "name": "warehouses",
+      "schemaName": "public",
+      "x": 336.76171875,
+      "y": 50
+    },
+    {
+      "name": "suppliers",
+      "schemaName": "public",
+      "x": 770.36767578125,
+      "y": 50
+    },
+    {
+      "name": "customers",
+      "schemaName": "public",
+      "x": 1129.40966796875,
+      "y": 50
+    },
+    {
+      "name": "categories",
+      "schemaName": "public",
+      "x": 0,
+      "y": 388
+    },
+    {
+      "name": "units_of_measure",
+      "schemaName": "public",
+      "x": 336.76171875,
+      "y": 324
+    },
+    {
+      "name": "brands",
+      "schemaName": "public",
+      "x": 770.36767578125,
+      "y": 420
+    },
+    {
+      "name": "products",
+      "schemaName": "public",
+      "x": 1129.40966796875,
+      "y": 452
+    },
+    {
+      "name": "product_warehouse",
+      "schemaName": "public",
+      "x": 0,
+      "y": 566
+    },
+    {
+      "name": "movement_types",
+      "schemaName": "public",
+      "x": 336.76171875,
+      "y": 502
+    },
+    {
+      "name": "kardex",
+      "schemaName": "public",
+      "x": 770.36767578125,
+      "y": 566
+    },
+    {
+      "name": "purchase_orders",
+      "schemaName": "public",
+      "x": 1129.40966796875,
+      "y": 1014
+    },
+    {
+      "name": "purchase_items",
+      "schemaName": "public",
+      "x": 0,
+      "y": 776
+    },
+    {
+      "name": "purchase_item_tax",
+      "schemaName": "public",
+      "x": 198.013861071329,
+      "y": 1568.8379970572753
+    },
+    {
+      "name": "sales_orders",
+      "schemaName": "public",
+      "x": 336.76171875,
+      "y": 680
+    },
+    {
+      "name": "sales_items",
+      "schemaName": "public",
+      "x": 770.36767578125,
+      "y": 1096
+    },
+    {
+      "name": "inventory_adjustments",
+      "schemaName": "public",
+      "x": 1129.40966796875,
+      "y": 1416
+    },
+    {
+      "name": "inventory_adjustment_items",
+      "schemaName": "public",
+      "x": 0,
+      "y": 1050
+    },
+    {
+      "name": "taxes",
+      "schemaName": "public",
+      "x": 385.28680062836463,
+      "y": 1223.2162987554077
+    },
+    {
+      "name": "tax_product",
+      "schemaName": "public",
+      "x": 725.2799376067727,
+      "y": 1509.6965021425224
+    },
+    {
+      "name": "catalog_sunat_codes",
+      "schemaName": "public",
+      "x": 481.1732148285708,
+      "y": -203.97955205520253
+    },
+    {
+      "name": "catalogs_sunat",
+      "schemaName": "public",
+      "x": 12,
+      "y": 12
+    }
+  ],
+  "tableGroupCollapseStates": [],
+  "stickyNoteLayouts": [],
+  "referencePaths": [
+    {
+      "firstFieldNames": [
+        "category_id"
+      ],
+      "firstTableName": "products",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "categories",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "unit_id"
+      ],
+      "firstTableName": "products",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "units_of_measure",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "parent_id"
+      ],
+      "firstTableName": "categories",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "categories",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "brand_id"
+      ],
+      "firstTableName": "products",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "brands",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "tax_id"
+      ],
+      "firstTableName": "products",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "taxes",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "product_id"
+      ],
+      "firstTableName": "product_warehouse",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "products",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "warehouse_id"
+      ],
+      "firstTableName": "product_warehouse",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "warehouses",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "product_id"
+      ],
+      "firstTableName": "kardex",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "products",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "warehouse_id"
+      ],
+      "firstTableName": "kardex",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "warehouses",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "movement_type_id"
+      ],
+      "firstTableName": "kardex",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "movement_types",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "created_by"
+      ],
+      "firstTableName": "kardex",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "users",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "supplier_id"
+      ],
+      "firstTableName": "purchase_orders",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "suppliers",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "warehouse_id"
+      ],
+      "firstTableName": "purchase_orders",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "warehouses",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "created_by"
+      ],
+      "firstTableName": "purchase_orders",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "users",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "purchase_order_id"
+      ],
+      "firstTableName": "purchase_items",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "purchase_orders",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "product_id"
+      ],
+      "firstTableName": "purchase_items",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "products",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "customer_id"
+      ],
+      "firstTableName": "sales_orders",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "customers",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "warehouse_id"
+      ],
+      "firstTableName": "sales_orders",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "warehouses",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "created_by"
+      ],
+      "firstTableName": "sales_orders",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "users",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "sales_order_id"
+      ],
+      "firstTableName": "sales_items",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "sales_orders",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "product_id"
+      ],
+      "firstTableName": "sales_items",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "products",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "warehouse_id"
+      ],
+      "firstTableName": "inventory_adjustments",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "warehouses",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "created_by"
+      ],
+      "firstTableName": "inventory_adjustments",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "users",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "adjustment_id"
+      ],
+      "firstTableName": "inventory_adjustment_items",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "inventory_adjustments",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "product_id"
+      ],
+      "firstTableName": "inventory_adjustment_items",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "products",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    }
+  ]
+}
