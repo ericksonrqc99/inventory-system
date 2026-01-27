@@ -7,20 +7,20 @@
     {
       "name": "users",
       "schemaName": "public",
-      "x": 0,
-      "y": 50
+      "x": -16.7451171875,
+      "y": 72.54578697156364
     },
     {
       "name": "warehouses",
       "schemaName": "public",
-      "x": 336.76171875,
-      "y": 50
+      "x": 386.42959177686333,
+      "y": 69.26329417335927
     },
     {
       "name": "suppliers",
       "schemaName": "public",
-      "x": 770.36767578125,
-      "y": 50
+      "x": 780.7485079607286,
+      "y": 62.11101275418093
     },
     {
       "name": "customers",
@@ -32,25 +32,25 @@
       "name": "categories",
       "schemaName": "public",
       "x": 0,
-      "y": 388
+      "y": 390.81822337144547
     },
     {
       "name": "units_of_measure",
       "schemaName": "public",
-      "x": 336.76171875,
-      "y": 324
+      "x": 387.5658779703872,
+      "y": 330.6244552634414
     },
     {
       "name": "brands",
       "schemaName": "public",
-      "x": 770.36767578125,
-      "y": 420
+      "x": 821.5949435076036,
+      "y": 426.6244552634414
     },
     {
       "name": "products",
       "schemaName": "public",
-      "x": 1129.40966796875,
-      "y": 452
+      "x": 1145.87744140625,
+      "y": 447.583696491039
     },
     {
       "name": "product_warehouse",
@@ -61,8 +61,8 @@
     {
       "name": "movement_types",
       "schemaName": "public",
-      "x": 336.76171875,
-      "y": 502
+      "x": 378.71645701123833,
+      "y": 508.6244552634414
     },
     {
       "name": "kardex",
@@ -85,8 +85,8 @@
     {
       "name": "purchase_item_tax",
       "schemaName": "public",
-      "x": 198.013861071329,
-      "y": 1568.8379970572753
+      "x": 7.16015625,
+      "y": 1505.2801986335614
     },
     {
       "name": "sales_orders",
@@ -101,16 +101,34 @@
       "y": 1096
     },
     {
-      "name": "inventory_adjustments",
+      "name": "sales_origins",
+      "schemaName": "public",
+      "x": 19.290980272339894,
+      "y": 1315.9222715636538
+    },
+    {
+      "name": "internal_transfers",
       "schemaName": "public",
       "x": 1129.40966796875,
-      "y": 1416
+      "y": -277.70389690291915
+    },
+    {
+      "name": "internal_transfers_item",
+      "schemaName": "public",
+      "x": 722.4583463749121,
+      "y": -257.83053111259477
+    },
+    {
+      "name": "inventory_adjustments",
+      "schemaName": "public",
+      "x": 1158.65966796875,
+      "y": 1393.9184824551953
     },
     {
       "name": "inventory_adjustment_items",
       "schemaName": "public",
       "x": 0,
-      "y": 1050
+      "y": 1098.5793385985703
     },
     {
       "name": "taxes",
@@ -121,20 +139,20 @@
     {
       "name": "tax_product",
       "schemaName": "public",
-      "x": 725.2799376067727,
-      "y": 1509.6965021425224
+      "x": 788.731201171875,
+      "y": 1474.3660740708347
     },
     {
       "name": "catalog_sunat_codes",
       "schemaName": "public",
-      "x": 481.1732148285708,
-      "y": -203.97955205520253
+      "x": 344.03387313159993,
+      "y": -250.84552197048754
     },
     {
       "name": "catalogs_sunat",
       "schemaName": "public",
-      "x": 12,
-      "y": 12
+      "x": -90.09390816194846,
+      "y": -295.008557060097
     }
   ],
   "tableGroupCollapseStates": [],
@@ -205,6 +223,36 @@
         "tax_id"
       ],
       "firstTableName": "products",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "taxes",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "product_id"
+      ],
+      "firstTableName": "tax_product",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "products",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "tax_id"
+      ],
+      "firstTableName": "tax_product",
       "firstSchemaName": "public",
       "firstRelation": "*",
       "secondFieldNames": [
@@ -382,6 +430,36 @@
     },
     {
       "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "purchase_items",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "purchase_item_id"
+      ],
+      "secondTableName": "purchase_item_tax",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "tax_id"
+      ],
+      "firstTableName": "purchase_item_tax",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "taxes",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
         "customer_id"
       ],
       "firstTableName": "sales_orders",
@@ -457,6 +535,81 @@
     },
     {
       "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "sales_origins",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "sale_origin_id"
+      ],
+      "secondTableName": "sales_orders",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "internal_transfer_id"
+      ],
+      "firstTableName": "internal_transfers_item",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "internal_transfers",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "from_warehouse_id"
+      ],
+      "firstTableName": "internal_transfers",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "warehouses",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "to_warehouse_id"
+      ],
+      "firstTableName": "internal_transfers",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "warehouses",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "created_by"
+      ],
+      "firstTableName": "internal_transfers",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "users",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
         "warehouse_id"
       ],
       "firstTableName": "inventory_adjustments",
@@ -513,6 +666,21 @@
       "secondTableName": "products",
       "secondSchemaName": "public",
       "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "catalogs_sunat",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "catalog_sunat_id"
+      ],
+      "secondTableName": "catalog_sunat_codes",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
       "checkPoints": []
     }
   ]

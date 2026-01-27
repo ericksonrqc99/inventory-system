@@ -99,7 +99,6 @@ Table products {
   // Configuraciones
   min_stock integer [default: 5, note: 'Punto de reorden']
   is_inventoriable boolean [default: true, note: 'False para servicios']
-  tax_id unsignedbigint [not null , note: 'Referencia a la tabla taxes']
   
   created_at timestamp
   deleted_at timestamp [note: 'Soft Delete']
@@ -143,7 +142,7 @@ Table kardex {
 
   // Valores matemáticos del movimiento
   quantity decimal(10,2) [note: 'Cantidad movida (+ o -)']
-  unit_cost decimal(15,4) [note: 'Costo unitario por item al momento del registro, sin ninguna adición']
+  unit_cost decimal(15,4) [note: 'Costo unitario por item al momento del registro, sin ninguna impuestos (precio neto)']
   total_cost decimal(15,4) [note: 'quantity * unit_cost']
   
   // Saldos resultantes (Para auditoría rápida)
@@ -161,7 +160,7 @@ Table kardex {
 }
 
 // ---------------------------------------------------------
-// 5. DOCUMENTO DE SISTEMA: COMPRAS (ENTRADAS)
+// 5. DOCUMENTO DE SISTEMA: ORDEN DE COMPRA (ENTRADAS)
 // ---------------------------------------------------------
 
 Table purchase_orders {
@@ -205,38 +204,44 @@ Table purchase_item_tax {
 }
 
 // ---------------------------------------------------------
-// 6. DOCUMENTO DE SISTEMA: VENTAS / POS (SALIDAS)
+// 6. DOCUMENTO DE SISTEMA: ORDEN DE VENTA (SALIDAS)
 // ---------------------------------------------------------
 
 Table sales_orders {
   id unsignedbigint [primary key, increment]
-  customer_id unsignedbigint
-  warehouse_id unsignedbigint [note: 'De dónde sale la mercancía']
-  date timestamp
-  status enum('pending', 'completed', 'cancelled', 'returned')
-  
+  customer_id unsignedbigint [note: 'Referencia a la tabla customers']  
+  warehouse_id unsignedbigint [note: 'Referencia a la tabla warehouses']
+  sale_origin_id unsignedbigint [note: 'Referencia a la tabla sales_origins, Ej: POS, APP, WEB'] 
+
+  // estados de venta y pago   
+  status enum('pending', 'completed', 'cancelled', 'returned') [note: 'Estado de la venta']
+  payment_status enum('unpaid', 'partial', 'paid') [note: 'Estado del pago']
+
   // Datos Financieros (Facturación)
-  subtotal decimal(12,2)
-  tax_amount decimal(12,2)  
-  total_amount decimal(12,2)
-  
+  subtotal decimal(12,2) [note: 'Subtotal de la venta']
+  payment_surcharge decimal(12,2) [default: 0, note: 'Cargo adicional por método de pago']
+  tax_amount decimal(12,2) [note: 'Monto total de impuestos']
+  total_amount decimal(12,2) [note: 'Total de la venta (subtotal + impuestos + cargos)']
+
   invoice_series varchar(20) [note: 'Ej: F001']
   invoice_number varchar(20) [note: 'Ej: 000045']
   
   created_by unsignedbigint [note: 'Id de usuario que realizó la venta']
   
   // Hitos de vida de la venta
-  created_at timestamp
   cacelled_at timestamp [null, note: 'Fecha de cancelación de la venta']
   paid_at timestamp [null, note:'Fecha de pago']
-  delivered_at timestamp
+  delivered_at timestamp [null, note: 'Fecha de entrega del producto']
+  
+
+  created_at timestamp [not null, note: 'Fecha de registro de la venta en la base de datos']
 }
 
 Table sales_items {
   id unsignedbigint [primary key, increment]
-  sales_order_id unsignedbigint
-  product_id unsignedbigint
-  quantity decimal(10,2)
+  sales_order_id unsignedbigint [note: 'Referencia a la tabla sales_orders']
+  product_id unsignedbigint [note: 'Referencia a la tabla products']
+  quantity decimal(10,2) [note: 'Cantidad vendida']
   unit_price decimal(12,2) [note: 'Precio de venta al momento']
   total_price decimal(12,2)
   
@@ -244,8 +249,86 @@ Table sales_items {
   cost_at_moment decimal(15,4) [note: 'Se copia del average_cost del producto al vender']
 }
 
+Table sales_origins {
+  id unsignedbigint [primary key, increment]    
+  name varchar(30) [note: 'Ej: POS, APP, WEB, etc.']
+  description varchar(255) [null, note: 'Descripción adicional del origen de la venta']
+  is_active boolean [default: true]
+}
+
+Table sales_item_tax {
+  id unsignedbigint [primary key, increment]
+  sales_item_id unsignedbigint
+  tax_id unsignedbigint
+  tax_rate decimal(5,2)
+  tax_amount decimal(15,4)
+}
+
+
+Table payments {
+  id unsignedbigint [primary key, increment]    
+
+  sale_order_id unsignedbigint [note: 'Referencia a la tabla sales_orders, id de la venta que se está pagando']
+  cash_register_shift_id unsignedbigint [note: 'Referencia a la tabla cash_register_shifts, id del usuario que atendió la venta']
+  payment_method_id unsignedbigint [note: 'Referencia a la tabla payment_methods, id del método de pago utilizado']
+
+  date timestamp [note: 'Fecha de realización del pago']
+
+  amount decimal(15,4) [note: 'Monto que cubre la deuda. Si la venta es 100, aquí va 100. amount_tendered - change_given = amount']
+  amount_tendered decimal(15,4) [null, note: 'Solo Efectivo: Cuánto billete entregó el cliente (Ej: 50.00)']
+  change_given decimal(15,4) [default: 0, note: 'Solo Efectivo: Vuelto entregado (Ej: 10.00). Dinero que SALE de caja.']
+  
+  // Trazabilidad Externa
+  reference_number varchar(100) [null, note: 'Código de operación, # Voucher, Hash de transacción']
+  
+  // Auditoría y Estado
+  status enum('completed', 'refunded', 'pending') [default: 'completed',  note: 'completed, refunded (anulado), pending (para pasarelas web)']
+  payment_gateway_data json [null, note: 'Para guardar respuesta completa de tarjeta: {auth_code: "123", card_last4: "4242"}']
+  
+  
+  // Soporte para Anulaciones
+  parent_payment_id unsignedbigint [null, note: 'Si este es un reembolso, apunta al pago original']
+
+  created_by unsignedbigint [note: 'Id de usuario que creó el pago']
+  created_at timestamp [note: 'Fecha de registro del pago en la base de datos']
+}
+
+Table payment_methods{
+  id unsignedbigint [primary key, increment]    
+  name varchar(50) [note: 'Ej: Efectivo, Tarjeta de Crédito, Yape, Plin']
+  extra_charge decimal(5,2) [default: 0, note: 'Porcentaje extra por uso del método de pago (Ej: 2.50 para 2.5%)']
+  is_fixed_charge boolean [default: false, note: 'True si el cargo extra es un monto fijo en lugar de un porcentaje']
+  description varchar(255) [null, note: 'Descripción adicional del método de pago']
+  is_active boolean [default: true]
+}
+
+
 // ---------------------------------------------------------
-// 7. DOCUMENTO DE SISTEMA: AJUSTES (INTERNOS)
+// 7. DOCUMENTO DE SISTEMA: ORDEN DE TRASLADO INTERNO (MOVIMIENTO INTERNO)
+// ---------------------------------------------------------
+
+Table internal_transfer_order {
+  id unsignedbigint [primary key, increment]
+  from_warehouse_id unsignedbigint [note: 'Referencia a la tabla warehouses (origen)']
+  to_warehouse_id unsignedbigint [note: 'Referencia a la tabla warehouses (destino)']
+  date timestamp [note: 'Fecha de la creación del traslado']
+  reason varchar(255) [null,note: 'Motivo del traslado']
+  status enum('draft', 'in_transit', 'completed', 'cancelled')
+  created_by unsignedbigint [note: 'Id de usuario que creó el traslado']
+  created_at timestamp [note: 'Fecha de registro en la base de datos']
+}
+
+Table internal_transfers_item {
+  id unsignedbigint [primary key, increment]
+  internal_transfer_id unsignedbigint [note: 'Referencia a la tabla internal_transfers']
+  product_id unsignedbigint [note: 'Referencia a la tabla products']
+  quantity decimal(10,2) [note: 'Cantidad a trasladar']
+  unit_price decimal(12,2) [note: 'Precio de venta al momento']
+  total_price decimal(12,2) [note: 'Precio total (quantity * unit_price)']
+}
+
+// ---------------------------------------------------------
+// 8. DOCUMENTO DE SISTEMA: AJUSTES MANUALES (MOVIMIENTO MANUAL DE INVENTARIO)
 // ---------------------------------------------------------
 
 Table inventory_adjustments {
@@ -267,7 +350,7 @@ Table inventory_adjustment_items {
 }
 
 // ---------------------------------------------------------
-// 8. IMPUESTOS
+// 9. IMPUESTOS
 // ---------------------------------------------------------
 Table taxes {
   id unsignedbigint
@@ -289,7 +372,7 @@ Table tax_product {
 }
 
 // ---------------------------------------------------------
-// 9. CATÁLOGOS CON CÓDIGO DE SUNAT (FACTURACIÓN ELECTRÓNICA)
+// 10. CATÁLOGOS CON CÓDIGO DE SUNAT (FACTURACIÓN ELECTRÓNICA)
 // ---------------------------------------------------------
 
 Table catalog_sunat_codes {
@@ -308,33 +391,97 @@ Table catalogs_sunat {
   is_active boolean [not null, default: true, note: 'Indica si el catálogo está activo para su uso']
 }
 
+// ---------------------------------------------------------
+// 11. CAJAS REGISTRADORAS (Y TURNOS DE CAJA)
+// 
 
+Table cash_registers {
+  id unsignedbigint [primary key, increment]
+  
+  // Ubicación
+  warehouse_id unsignedbigint [note: 'A qué sucursal pertenece (Ej: Tienda Juliaca)']
+  
+  // Identificación
+  name varchar(100) [note: 'Ej: Caja Rápida 1, Caja Principal, Tablet Vendedor 3']
+  code varchar(50) [unique, note: 'Código de activo fijo o serie interna (Ej: POS-JUL-01)']
+  
+  // Estado y Optimización
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al iniciar sesión']
+  internal_note text [null, note: 'Notas internas sobre la caja registradora (Ej: Ubicación física, tipo de impresora, falla conocida, etc.)']
+  
+  // CACHÉ DE RENDIMIENTO (El truco del Senior Dev)
+  // Guarda el ID del turno actual para no buscarlo en la tabla gigante de shifts en cada venta.
+  current_shift_id unsignedbigint [null, note: 'Si es NULL = Caja Cerrada. Si tiene ID = Caja Ocupada.']
+
+  // Configuración Técnica Local
+  settings json [null, note: 'IP de impresora, footer del ticket, si permite pagos en dólares, etc.']
+  
+  created_at timestamp [not null, note : 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note : 'Fecha de última actualización del registro en la base de datos']
+}
+
+
+Table cash_register_shifts {
+  id unsignedbigint [primary key, increment]
+  
+  // Relaciones (Quién y Dónde)
+  cash_register_id unsignedbigint [note: 'Referencia a la tabla cash_registers, id de la caja registradora']
+  user_id unsignedbigint [note: 'Referencia a la tabla users, id del cajero responsable']
+  
+  // Tiempos y Estado
+  status varchar(20) [default: 'open', note: 'Estados: open, closed, auditing (bloqueado para conteo)']
+  opened_at timestamp [not null, note: 'Fecha y hora de apertura del turno']
+  closed_at timestamp [null, note: 'Fecha y hora de cierre del turno']
+  
+  // DINERO INICIAL (Base/Sencillo)
+  starting_cash decimal(15,4) [default: 0, note: 'Dinero entregado al cajero al iniciar para dar vuelto']
+  
+  // --- SECCIÓN A: LO QUE DICE EL SISTEMA (Calculado) ---
+  // Estos campos se llenan solos sumando la tabla 'payments' al cerrar.
+  system_cash_sales decimal(15,4) [default: 0, note: 'Total ventas en Efectivo según software']
+  system_card_sales decimal(15,4) [default: 0, note: 'Total ventas Tarjeta según software']
+  system_transfer_sales decimal(15,4) [default: 0]
+  system_expenses decimal(15,4) [default: 0, note: 'Salidas de dinero registradas (Ej: Pago a proveedores caja chica)']
+  
+  // --- SECCIÓN B: LO QUE DICE EL CAJERO (Realidad) ---
+  // Estos campos los llena el humano contando billete por billete.
+  real_cash_count decimal(15,4) [null]
+  real_card_count decimal(15,4) [null, note: 'Suma de vouchers físicos']
+  
+  // --- SECCIÓN C: EL VEREDICTO ---
+  // Diferencia = (Real - (Inicial + VentasSistema - Gastos))
+  difference decimal(15,4) [null, note: '0 = Perfecto. Negativo = Faltante (Robo/Error). Positivo = Sobrante.']
+  
+  closing_note text [null, note: 'Explicación del cajero si hubo diferencia']
+  
+  created_at timestamp
+  updated_at timestamp
+}
 
 
 // ---------------------------------------------------------
 // RELACIONES (FOREIGN KEYS)
 // ---------------------------------------------------------
 
-// Productos
+// PRODUCTOS
 Ref: products.category_id > categories.id
 Ref: products.unit_id > units_of_measure.id
 Ref: categories.parent_id > categories.id
 Ref: products.brand_id > brands.id
-Ref: products.tax_id > taxes.id
 Ref: tax_product.product_id > products.id
 Ref: tax_product.tax_id > taxes.id
 
-// Stock Snapshot
+// STOCK SNAPSHOT
 Ref: product_warehouse.product_id > products.id
 Ref: product_warehouse.warehouse_id > warehouses.id
 
-// Kardex
+// KARDEX
 Ref: kardex.product_id > products.id
 Ref: kardex.warehouse_id > warehouses.id
 Ref: kardex.movement_type_id > movement_types.id
 Ref: kardex.created_by > users.id
 
-// Compras
+// COMPRAS
 Ref: purchase_orders.supplier_id > suppliers.id
 Ref: purchase_orders.warehouse_id > warehouses.id
 Ref: purchase_orders.created_by > users.id
@@ -343,18 +490,37 @@ Ref: purchase_items.product_id > products.id
 Ref: purchase_items.id < purchase_item_tax.purchase_item_id
 Ref: purchase_item_tax.tax_id > taxes.id
 
-// Ventas
+// VENTAS
 Ref: sales_orders.customer_id > customers.id
 Ref: sales_orders.warehouse_id > warehouses.id
 Ref: sales_orders.created_by > users.id
 Ref: sales_items.sales_order_id > sales_orders.id
 Ref: sales_items.product_id > products.id
+Ref: sales_origins.id < sales_orders.sale_origin_id
 
-// Ajustes
+// TRANSFERENCIAS INTERNAS
+Ref: internal_transfers_item.internal_transfer_id > internal_transfer_order.id 
+Ref: internal_transfer_order.from_warehouse_id > warehouses.id
+Ref: internal_transfer_order.to_warehouse_id > warehouses.id
+Ref: internal_transfer_order.created_by > users.id
+
+// AJUSTES DE INVENTARIO
 Ref: inventory_adjustments.warehouse_id > warehouses.id
 Ref: inventory_adjustments.created_by > users.id
 Ref: inventory_adjustment_items.adjustment_id > inventory_adjustments.id
 Ref: inventory_adjustment_items.product_id > products.id
 
-// Catalogos SUNAT
+// CATALAGOS SUNAT
 Ref: catalogs_sunat.id < catalog_sunat_codes.catalog_sunat_id
+
+// PAGOS
+Ref: payments.sale_order_id > sales_orders.id
+Ref: payments.cash_register_shift_id > cash_register_shifts.id
+Ref: payments.payment_method_id > payment_methods.id
+Ref: payments.parent_payment_id > payments.id
+Ref: payments.created_by > users.id
+
+// CAJAS REGISTRADORAS Y TURNOS
+Ref: cash_registers.warehouse_id > warehouses.id
+Ref: cash_register_shifts.cash_register_id > cash_registers.id
+Ref: cash_register_shifts.user_id > users.id   
