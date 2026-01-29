@@ -155,7 +155,7 @@ Table products {
   unit_id unsignedbigint [not null, note: 'Referencia a la tabla units_of_measure']
 
   images json [null, note: 'Array JSON con URLs de imágenes del producto']
-  
+
   // Precios y Costos promedios
   net_amount decimal(10,2) [note: 'Precio neto, sin impuestos']
   average_cost decimal(15,4) [default: 0, note: 'Costo Promedio Ponderado Global (Referencial)']
