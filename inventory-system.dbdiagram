@@ -29,22 +29,46 @@
       "y": 50
     },
     {
+      "name": "sunat_catalogs",
+      "schemaName": "public",
+      "x": -378.08462712779516,
+      "y": 1758.6303158000437
+    },
+    {
+      "name": "sunat_codes",
+      "schemaName": "public",
+      "x": -9.333929725171345,
+      "y": 1735.6160906753357
+    },
+    {
+      "name": "movement_types",
+      "schemaName": "public",
+      "x": 378.71645701123833,
+      "y": 508.6244552634414
+    },
+    {
       "name": "categories",
       "schemaName": "public",
       "x": 0,
       "y": 390.81822337144547
     },
     {
-      "name": "units_of_measure",
-      "schemaName": "public",
-      "x": 387.5658779703872,
-      "y": 330.6244552634414
-    },
-    {
       "name": "brands",
       "schemaName": "public",
       "x": 821.5949435076036,
       "y": 426.6244552634414
+    },
+    {
+      "name": "sales_origins",
+      "schemaName": "public",
+      "x": 19.290980272339894,
+      "y": 1315.9222715636538
+    },
+    {
+      "name": "payment_methods",
+      "schemaName": "public",
+      "x": 372.6514074887797,
+      "y": 1749.4365329552284
     },
     {
       "name": "products",
@@ -57,12 +81,6 @@
       "schemaName": "public",
       "x": 0,
       "y": 566
-    },
-    {
-      "name": "movement_types",
-      "schemaName": "public",
-      "x": 378.71645701123833,
-      "y": 508.6244552634414
     },
     {
       "name": "kardex",
@@ -89,6 +107,12 @@
       "y": 1505.2801986335614
     },
     {
+      "name": "invoices_purchases",
+      "schemaName": "public",
+      "x": -133.42915177614483,
+      "y": -64.82967143187511
+    },
+    {
       "name": "sales_orders",
       "schemaName": "public",
       "x": 336.76171875,
@@ -101,16 +125,34 @@
       "y": 1096
     },
     {
-      "name": "sales_origins",
+      "name": "sales_item_tax",
       "schemaName": "public",
-      "x": 19.290980272339894,
-      "y": 1315.9222715636538
+      "x": 597.9958899106546,
+      "y": -34.646586226495685
     },
     {
-      "name": "internal_transfers",
+      "name": "payments",
       "schemaName": "public",
-      "x": 1129.40966796875,
-      "y": -277.70389690291915
+      "x": 1566.8989779007645,
+      "y": 1518.567156113081
+    },
+    {
+      "name": "invoices_sales",
+      "schemaName": "public",
+      "x": 1681.75732421875,
+      "y": 12
+    },
+    {
+      "name": "invoices_sales_items",
+      "schemaName": "public",
+      "x": 955.0546875,
+      "y": 12
+    },
+    {
+      "name": "internal_transfer_order",
+      "schemaName": "public",
+      "x": 716.29931640625,
+      "y": 1689.8284908099552
     },
     {
       "name": "internal_transfers_item",
@@ -131,28 +173,34 @@
       "y": 1098.5793385985703
     },
     {
-      "name": "taxes",
-      "schemaName": "public",
-      "x": 385.28680062836463,
-      "y": 1223.2162987554077
-    },
-    {
       "name": "tax_product",
       "schemaName": "public",
       "x": 788.731201171875,
       "y": 1474.3660740708347
     },
     {
-      "name": "catalog_sunat_codes",
+      "name": "cash_registers",
       "schemaName": "public",
-      "x": 344.03387313159993,
-      "y": -250.84552197048754
+      "x": 372.6514074887797,
+      "y": 1341.5480749942185
     },
     {
-      "name": "catalogs_sunat",
+      "name": "cash_register_shifts",
       "schemaName": "public",
-      "x": -90.09390816194846,
-      "y": -295.008557060097
+      "x": 1139.221116983074,
+      "y": 1707.800324254148
+    },
+    {
+      "name": "referral_guides",
+      "schemaName": "public",
+      "x": 1738.6943457414563,
+      "y": 383.35683281954266
+    },
+    {
+      "name": "referral_guides_items",
+      "schemaName": "public",
+      "x": 1311.68701171875,
+      "y": 12
     }
   ],
   "tableGroupCollapseStates": [],
@@ -183,7 +231,7 @@
       "secondFieldNames": [
         "id"
       ],
-      "secondTableName": "units_of_measure",
+      "secondTableName": "sunat_codes",
       "secondSchemaName": "public",
       "secondRelation": "1",
       "checkPoints": []
@@ -220,21 +268,6 @@
     },
     {
       "firstFieldNames": [
-        "tax_id"
-      ],
-      "firstTableName": "products",
-      "firstSchemaName": "public",
-      "firstRelation": "*",
-      "secondFieldNames": [
-        "id"
-      ],
-      "secondTableName": "taxes",
-      "secondSchemaName": "public",
-      "secondRelation": "1",
-      "checkPoints": []
-    },
-    {
-      "firstFieldNames": [
         "product_id"
       ],
       "firstTableName": "tax_product",
@@ -258,7 +291,7 @@
       "secondFieldNames": [
         "id"
       ],
-      "secondTableName": "taxes",
+      "secondTableName": "sunat_codes",
       "secondSchemaName": "public",
       "secondRelation": "1",
       "checkPoints": []
@@ -453,7 +486,7 @@
       "secondFieldNames": [
         "id"
       ],
-      "secondTableName": "taxes",
+      "secondTableName": "sunat_codes",
       "secondSchemaName": "public",
       "secondRelation": "1",
       "checkPoints": []
@@ -558,7 +591,7 @@
       "secondFieldNames": [
         "id"
       ],
-      "secondTableName": "internal_transfers",
+      "secondTableName": "internal_transfer_order",
       "secondSchemaName": "public",
       "secondRelation": "1",
       "checkPoints": []
@@ -567,7 +600,7 @@
       "firstFieldNames": [
         "from_warehouse_id"
       ],
-      "firstTableName": "internal_transfers",
+      "firstTableName": "internal_transfer_order",
       "firstSchemaName": "public",
       "firstRelation": "*",
       "secondFieldNames": [
@@ -582,7 +615,7 @@
       "firstFieldNames": [
         "to_warehouse_id"
       ],
-      "firstTableName": "internal_transfers",
+      "firstTableName": "internal_transfer_order",
       "firstSchemaName": "public",
       "firstRelation": "*",
       "secondFieldNames": [
@@ -597,7 +630,7 @@
       "firstFieldNames": [
         "created_by"
       ],
-      "firstTableName": "internal_transfers",
+      "firstTableName": "internal_transfer_order",
       "firstSchemaName": "public",
       "firstRelation": "*",
       "secondFieldNames": [
@@ -670,17 +703,137 @@
     },
     {
       "firstFieldNames": [
+        "sale_order_id"
+      ],
+      "firstTableName": "payments",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
         "id"
       ],
-      "firstTableName": "catalogs_sunat",
-      "firstSchemaName": "public",
-      "firstRelation": "1",
-      "secondFieldNames": [
-        "catalog_sunat_id"
-      ],
-      "secondTableName": "catalog_sunat_codes",
+      "secondTableName": "sales_orders",
       "secondSchemaName": "public",
-      "secondRelation": "*",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "cash_register_shift_id"
+      ],
+      "firstTableName": "payments",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "cash_register_shifts",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "payment_method_id"
+      ],
+      "firstTableName": "payments",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "payment_methods",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "parent_payment_id"
+      ],
+      "firstTableName": "payments",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "payments",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "created_by"
+      ],
+      "firstTableName": "payments",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "users",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "warehouse_id"
+      ],
+      "firstTableName": "cash_registers",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "warehouses",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "cash_register_id"
+      ],
+      "firstTableName": "cash_register_shifts",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "cash_registers",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "user_id"
+      ],
+      "firstTableName": "cash_register_shifts",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "users",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "sunat_catalog_id"
+      ],
+      "firstTableName": "sunat_codes",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "sunat_catalogs",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
       "checkPoints": []
     }
   ]
