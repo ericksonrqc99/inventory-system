@@ -3,63 +3,220 @@ Project InventorySystem {
   database_type: 'PostgreSQL'
   Note: 'Sistema de Inventario Robusto con preparación para POS y Facturación'
 }
-
-// ---------------------------------------------------------
-// 1. CATÁLOGOS Y DATOS MAESTROS
-// ---------------------------------------------------------
-
-Table users {
+//----------------------TABLAS SAAS MAESTRAS-----------------------------
+Table admins {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  warehouse_id unsignedbigint [null, note: 'Referencia a la tabla warehouses, almacén predeterminado del usuario']
   name varchar(100) [not null, note: 'Nombre completo del usuario']
   email varchar(100) [not null, unique, note: 'Correo electrónico único por usuario']
   email_verified_at timestamp [null, note: 'Fecha de verificación del correo electrónico']
   password varchar(255) [not null, note: 'Contraseña encriptada del usuario']
-  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+  created_by unsignedbigint [null, note: 'Referencia al usuario que creó el registro']
   is_active boolean [default: true, note: 'Si es false, el usuario no puede acceder al sistema']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_by unsignedbigint [not null, note: 'Referencia al usuario que actualizó el registro']
   deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
   
-  Note: 'Usuarios del sistema'
+  Note: 'administradores del SaaS'
+}
+Table countries {
+  id unsignedbigint [primary key, increment]
+  name varchar(100) [not null, note: 'Nombre del país']
+  code varchar(10) [not null, unique, note: 'Código del país']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear registros']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+}
+
+Table regions {
+  id unsignedbigint [primary key, increment]
+  name varchar(100) [not null, note: 'Nombre de la región o region_ido']
+  country_id unsignedbigint [not null, note: 'Referencia a la tabla countries']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear registros']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+}
+
+Table provinces {
+  id unsignedbigint [primary key, increment]
+  name varchar(100) [not null, note: 'Nombre de la provincia']
+  region_id unsignedbigint [not null, note: 'Referencia a la tabla regions']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear registros']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+}
+
+Table districts {
+  id unsignedbigint [primary key, increment]
+  name varchar(100) [not null, note: 'Nombre del distrito']
+  province_id unsignedbigint [not null, note: 'Referencia a la tabla province_ids']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear registros']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+}
+
+Table sunat_catalogs {
+  id unsignedbigint [primary key, increment]
+  number varchar(10) [note: 'Número de catalógo SUNAT, Ej: 01, 02, 03']
+  description varchar(255) [note: 'Descripción del catálogo SUNAT']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+}
+
+Table sunat_codes {
+  id unsignedbigint [primary key, increment]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  sunat_catalog_id unsignedbigint [note: 'Referencia a la tabla sunat_catalogs']
+  code varchar(10) [note: 'Código del ítem en el catálogo SUNAT']
+  description varchar(255) [note: 'Descripción del ítem en el catálogo SUNAT']
+  short_description varchar(100) [note: 'Descripción corta para mostrar en UI']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+}
+
+Table types_taxes {
+  id unsignedbigint [primary key, increment]
+  sunat_code_id unsignedbigint [note: 'Referencia a la tabla sunat_codes, id del código SUNAT del impuesto']
+  tax_rate decimal(15,4) [not null, note: 'Tasa del impuesto']
+  is_fixed boolean [default: false, note: 'True si es un monto fijo en lugar de un porcentaje']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+}
+
+Table types_tax_documents {
+  id unsignedbigint [primary key, increment] 
+  sunat_code_id unsignedbigint [note: 'Referencia a la tabla sunat_codes, id del código SUNAT del tipo de documento']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+}
+
+
+Table types_units_measurement {
+  id unsignedbigint [primary key, increment]
+  sunat_code_id unsignedbigint [note: 'Referencia a la tabla sunat_codes, id del código SUNAT de la unidad de medida']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+}
+
+
+Table types_stock_movements {
+  id unsignedbigint [primary key, increment]
+  name varchar [note: 'Ej: Compra, Venta, Ajuste Entrada y Ajuste Salida']
+  action enum('input', 'output') [note: 'Define si suma o resta matemáticamente (input: suma, output: resta)']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear registros']
+  created_at timestamp [note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [note: 'Fecha de última actualización del registro en la base de datos']
+  deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
+}
+
+Table sales_channels {
+  id unsignedbigint [primary key, increment]    
+  name varchar(30) [note: 'Ej: POS, APP, WEB, etc.']
+  description varchar(255) [null, note: 'Descripción adicional del origen de la venta']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear registros']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+  deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
+}
+
+
+// ---------------------------------------------------------
+
+// ------------DATOS MESTROS PARA UNA SAAS COMPANY--------------------
+Table users {
+  id unsignedbigint [primary key, increment]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  name varchar(100) [not null, note: 'Nombre completo del usuario']
+  first_surname varchar(100) [null, note: 'Primer apellido del usuario']
+  second_surname varchar(100) [null, note: 'Segundo apellido del usuario']
+  email varchar(100) [not null, unique, note: 'Correo electrónico único por usuario']
+  email_verified_at timestamp [null, note: 'Fecha de verificación del correo electrónico']
+  password varchar(255) [not null, note: 'Contraseña encriptada del usuario']
+  created_by unsignedbigint [not null, note: 'Referencia al usuario que creó el registro']
+  is_active boolean [default: true, note: 'Si es false, el usuario no puede acceder al sistema']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+  deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
+  
+  Note: 'Usuarios de una compania del SaaS'
+}
+
+Table branches {
+  id unsignedbigint [primary key, increment]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla companies, id de la compañia a la cual pertenece la sucursal"]
+  name varchar(100) [not null, note: 'Nombre de la sucursal']
+  description varchar(255) [null, note: 'Descripción adicional de la sucursal']
+  address varchar(255) [not null, note: 'Dirección de la sucursal']
+  phone varchar(20) [null, note: 'Teléfono de contacto']
+  country_id unsignedbigint [not null, note: 'Referencia a la tabla countries']
+  region_id unsignedbigint [null, note: 'Referencia a la tabla regions']
+  province_id unsignedbigint [null, note: 'Referencia a la tabla provinces']
+  district_id unsignedbigint [null, note: 'Referencia a la tabla districts']
+  ubigeo varchar(6) [null, note: 'Código UBIGEO, para Perú']
+  zip_code varchar(10) [null, note: 'Código postal o ZIP']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
+  deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
+  
+  Note: 'Sucursales de la empresa'
 }
 
 Table warehouses {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  parent_id unsignedbigint [null, note: 'Para sucursales dentro de una misma empresa']
-  name varchar [not null, note: 'Nombre de la sucursal o bodega']
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  branch_id unsignedbigint [not null, note: 'Referencia a la tabla branches, sucursal a la que pertenece el almacén']
+  name varchar(100) [not null, note: 'Nombre de la sucursal o bodega']
   description varchar(255) [null, note: 'Descripción adicional']
-  address varchar(255) [not null, note: 'Dirección del almacén o tienda']
-  departament varchar(50) [null, note: 'Departamento o Región']
-  province varchar(50) [null, note: 'Provincia']
-  district varchar(50) [null, note: 'Distrito']
-  ubigueo varchar(6) [null, note: 'Código UBIGEO']
+  address varchar(50) [not null, note: 'Dirección del almacén o tienda']
+  phone varchar(20) [null, note: 'Teléfono de contacto']
+  country_id unsignedbigint [not null, note: 'Referencia a la tabla countries, país']
+  region_id unsignedbigint [null, note: 'Referencia a la tabla regions, región o region_id']
+  province_id unsignedbigint [null, note: 'Referencia a la tabla provinces, provincia']
+  district_id unsignedbigint [null, note: 'Referencia a la tabla districts, distrito']
+  ubigeo varchar(6) [null, note: 'Código UBIGEO, para Perú']
+  zip_code varchar(10) [null, note: 'Código postal o ZIP']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
   created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos'] 
-  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
   deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
 
-  Note: 'Bodegas físicas o Tiendas (Puntos de Venta)'
+  Note: 'Almacenes que pertenecen a una sucursal'
 }
 
 Table suppliers {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla companies, id del team al cual pertenece el usuario"]
+  company_name varchar(100) [not null, note: 'Razón social']
   trade_name varchar(100) [null, note: 'Nombre comercial']
-  company_name varchar(100) [null, note: 'Razón social']
   ruc varchar(15) [not null, note: 'Número RUC']
-  contact_name varchar(100) [not null, note: 'Nombre del contacto principal dentro de la empresa']
+  contact_name varchar(100) [not null, note: 'Nombre completo del contacto principal dentro de la empresa']
   email varchar(100) [null, note: 'Correo electrónico de contacto']
-  phone varchar(100) [not null, note: 'Teléfono de contacto']
-  address text(100) [not null, note: 'Dirección física de la empresa']
-  departament varchar(50) [not null, note: 'Departamento o Región']
-  province varchar(50) [not null, note: 'Provincia']
-  district varchar(50) [not null, note: 'Distrito']
-  ubigueo varchar(6) [not null, note: 'Código UBIGEO']
+  phone varchar(25) [not null, note: 'Teléfono de contacto']
+  address varchar(50) [not null, note: 'Dirección física de la empresa']
+  region_id unsignedbigint [not null, note: 'Relación a la tabla regions']
+  province_id unsignedbigint [not null, note: 'Relación a la tabla provinces']
+  district_id unsignedbigint [not null, note: 'Relación a la tabla districts']
+  ubigueo varchar(6) [not null, note: 'Código UBIGEO, para Perú']
+  zip_code varchar(10) [null, note: 'Código postal o ZIP']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro'] 
+  is_active boolean [default: true,note: "si es false, no aparece en el selector al crear documentos"]
   created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
-  is_active boolean [default: true,note: "si es false, no aparece en el selector al crear documentos"]
   deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
   
   Note: 'Proveedores de productos y servicios'
@@ -67,84 +224,37 @@ Table suppliers {
 
 Table customers {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla companies, id del team al cual pertenece el usuario"]
   names varchar(100) [not null, note: 'Nombres del cliente']
-  first_surname varchar(50) [null, note: 'Primer apellido']
-  second_surname varchar(50) [null, note: 'Segundo apellido']
-  id_document_number varchar(20) [null, note: 'Número de documento de identifiación']
-  ruc varchar(15) [null, note: 'RUC para empresas']
+  first_surname varchar(100) [null, note: 'Primer apellido']
+  second_surname varchar(100) [null, note: 'Segundo apellido']
+  type_of_identity_document_id unsignedbigint [not null, note: 'Referencia a la tabla types_of_identity_documents']
+  id_document_number varchar(20) [null, note: 'Número de documento de identifiación ( DNI, CE, RUC)']
   email varchar(100) [null, note: 'Correo electrónico del cliente']
   phone varchar(50) [null, note: 'Teléfono del cliente']
-  address text(100) [null, note: 'Dirección del cliente']
-  departament varchar(50) [null, note: 'Departamento del cliente']
-  province varchar(50) [null, note: 'Provincia del cliente']
-  district varchar(50) [null, note: 'Distrito del cliente']
+  address varchar(100) [null, note: 'Dirección del cliente']
+  region_id varchar(50) [null, note: 'region_ido del cliente']
+  province_id varchar(50) [null, note: 'Provincia del cliente']
+  district_id varchar(50) [null, note: 'Distrito del cliente']
   ubigueo varchar(6) [null, note: 'Código UBIGEO']
+  zip_code varchar(10) [null, note: 'Código postal o ZIP']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
+  is_active boolean [default: true, note: "si es false, no aparece en el selector al crear documentos"]
   created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
-  is_active boolean [default: true]
   deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
-
+  
   Note: 'Clientes para ventas y facturación'
-}
-
-
-Table sunat_catalogs {
-  id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  number varchar(10) [note: 'Número de catalógo SUNAT, Ej: 01, 02, 03']
-  description varchar(255) [note: 'Descripción del catálogo SUNAT']
-  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
-  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
-  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
-  deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
-}
-
-Table sunat_codes {
-  id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  sunat_catalog_id unsignedbigint [note: 'Referencia a la tabla sunat_catalogs']
-  code varchar(10) [note: 'Código del ítem en el catálogo SUNAT']
-  description varchar(255) [note: 'Descripción del ítem en el catálogo SUNAT']
-  short_description varchar(100) [note: 'Descripción corta para mostrar en UI']
-  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
-  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
-  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
-  deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
-}
-
-// Tablas relacionadas con catálogos de SUNAT
-
-Table taxes {
-  id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  sunat_code_id unsignedbigint [note: 'Referencia a la tabla sunat_codes, id del código SUNAT del impuesto']
-  tax_rate decimal(15,4) [not null, note: 'Tasa del impuesto']
-  is_fixed boolean [default: false, note: 'True si es un monto fijo en lugar de un porcentaje']
-  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
-  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
-  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
-  deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
-}
-
-// Fin Tablas relacionadas con catálogos de SUNAT
-
-
-Table movement_types {
-  id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  name varchar [note: 'Ej: Compra, Venta, Ajuste Entrada y Ajuste Salida']
-  action enum('input', 'output') [note: 'Define si suma o resta matemáticamente (input: suma, output: resta)']
-  created_at timestamp [note: 'Fecha de creación del registro en la base de datos']
-  deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
 }
 
 Table categories {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla companies, id del team al cual pertenece el usuario"]
+  parent_id unsignedbigint [note: 'Referencia a la misma tabla categories para subcategorías']
   name varchar(100) [not null, note: 'Nombre de la categoría']
   description varchar(255) [null, note: 'Descripción adicional de la categoría']
-  parent_id unsignedbigint [note: 'Referencia a la misma tabla categories para subcategorías']
+  images json [null, note: 'Array JSON con URLs de imágenes de la categoría']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
   is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear productos']
   created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
@@ -153,55 +263,46 @@ Table categories {
 
 Table brands {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla companies, id del team al cual pertenece el usuario"]
   name varchar(50) [note: 'Toyota, Hyunday, Repsol, Pari']
+  short_name varchar(20) [null, note: 'Nombre corto para mostrar en UI']
+  images json [null, note: 'Array JSON con URLs de imágenes del brand']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear productos']
   created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
   deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
 }
 
-Table sales_origins {
-  id unsignedbigint [primary key, increment]    
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  name varchar(30) [note: 'Ej: POS, APP, WEB, etc.']
-  description varchar(255) [null, note: 'Descripción adicional del origen de la venta']
-  is_active boolean [default: true]
-  deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
-}
-
 Table payment_methods{
   id unsignedbigint [primary key, increment]    
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   name varchar(50) [note: 'Ej: Efectivo, Tarjeta de Crédito, Yape, Plin']
-  extra_charge decimal(5,2) [default: 0, note: 'Porcentaje extra por uso del método de pago (Ej: 2.50 para 2.5%)']
-  is_fixed_charge boolean [default: false, note: 'True si el cargo extra es un monto fijo en lugar de un porcentaje']
   description varchar(255) [null, note: 'Descripción adicional del método de pago']
+  extra_charge decimal(15,4) [default: 0, note: 'Porcentaje o monto extra por uso del método de pago']
+  is_fixed_charge boolean [default: false, note: 'True si el cargo extra es un monto fijo en lugar de un porcentaje']
+  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el registro']
   is_active boolean [default: true]
+  created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
   deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
 }
 
 // ---------------------------------------------------------
-// 2. PRODUCTOS 
-// ---------------------------------------------------------
 
-Table products {
+
+Table base_products {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-
-  // Información básica
-  name varchar(100) [not null, note: 'Nombre del producto']
-  description varchar(255) [null, note: 'Descripción del producto']
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  name varchar(100) [not null, note: 'Nombre genérico del producto si tiene variantes.']
+  description varchar(255) [null, note: 'Descripción genérica del producto si tiene variantes']
   brand_id unsignedbigint [null, note: 'Referencia a la tabla brands']
   category_id unsignedbigint [not null,note: 'Referencia a la tabla categories']
-  unit_id unsignedbigint [not null, note: 'Referencia a la tabla sunat_codes, unidad de medida del producto']
-
-  // Configuraciones
-  has_variants boolean [default: false, note: 'True si el producto tiene variantes (tallas, colores, etc.)']
-
-  // Auditoría
+  unit_measurement_id unsignedbigint [not null, note: 'Referencia a la tabla sunat_codes, unidad de medida del producto']
+  images json [null, note: 'Array JSON con URLs de imágenes del producto']
+  has_variants boolean [default: false, note: 'True si el producto tiene variantes (tallas, colores, etc.), false si es un producto simple']
   created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó el producto'] 
-
-  //Timestamps
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
   created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
   deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
@@ -209,29 +310,20 @@ Table products {
 
 Table product_variants{
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  product_id unsignedbigint [not null, note: 'Referencia a la tabla products']
-  
+  company_id unsignedbigint [not null, note:"Referencia a la tabla companies, id del team al cual pertenece el usuario"]
+  base_product_id unsignedbigint [not null, note: 'Referencia a la tabla base_products']
   name varchar(100) [not null, note: 'Nombre de la variante']
-  // codigos
+  description varchar(255) [null, note: 'Descripción específica de la variante']
   sku varchar(50) [unique, not null, note: 'Código interno único de la variante']
   barcode varchar(70) [note: 'Código EAN/UPC escaneable de la variante']
   factory_code varchar(50) [null, note: 'Código del fabricante']
-
-  // Multimedia
   images json [null, note: 'Array JSON con URLs de imágenes de la variante']
-
-  // Precios y Costos promedios
-  net_price decimal(15,4) [note: 'Precio neto, sin impuestos']
-  average_cost decimal(15,4) [default: 0, note: 'Costo Promedio Ponderado Global (Referencial)']
-
-  // Configuraciones
-  min_stock integer [default: 2, note: 'Punto de reorden']
-  alert_stock boolean [default: true, note: 'True para activar alerta de stock bajo']
-  is_inventoriable boolean [default: true, note: 'False para servicios']
-
-  created_by unsignedbigint [not null, note: 'Referencia a la tabla users, id del usuario que creó la variante']
-
+  average_cost decimal(15,4) [default: 0, note: 'Costo Promedio Ponderado Global (costo promedio de adquisición del inventario)']
+  net_price decimal(15,4) [note: 'Precio neto, sin impuestos (precio de venta sin impuestos)']
+  min_stock integer [default: 2, note: 'Punto de reorden, stock mínimo antes de activar alerta']
+  product_type enum('product', 'service') [default: 'product', note: 'Tipo de producto: product o service']
+  is_visible_pos boolean [default: true, note: 'Si es true, aparece en el POS para venta rápida']
+  is_active boolean [default: true, note: 'Si es false, no aparece en el selector al crear documentos']
   created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
   deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
@@ -239,11 +331,9 @@ Table product_variants{
 
 Table product_variant_options {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   product_variant_id unsignedbigint [not null, note: 'Referencia a la tabla product_variants']
   option_name varchar(100) [not null, note: 'Nombre de la opción (Ej: Color, Talla)']
-
-
   created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
   deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
@@ -251,21 +341,20 @@ Table product_variant_options {
 
 Table product_variant_values {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  product_variant_id unsignedbigint [not null, note: 'Referencia a la tabla product_variants']
-  option_name varchar(100) [not null, note: 'Nombre de la opción (Ej: Color, Talla)']
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  product_variant_option_id unsignedbigint [not null, note: 'Referencia a la tabla product_variant_options']
   option_value varchar(100) [not null, note: 'Valor de la opción (Ej: Rojo, XL)']
+  is_numeric boolean [default: false, note: 'True si el valor es numérico (Ej: 42, 100)']
   created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
   deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
 }
 
-
-Table product_tax {
+Table product_variant_tax {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  product_id unsignedbigint [not null, note: 'Referencia a la tabla products']
-  tax_id unsignedbigint [not null, note: 'Referencia a la tabla taxes, id del impuesto aplicado al producto']
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  product_variant_id unsignedbigint [not null, note: 'Referencia a la tabla product_variants']
+  type_tax_id unsignedbigint [not null, note: 'Referencia a la tabla taxes, id del impuesto aplicado a la variante']
   created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
   deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
@@ -275,11 +364,12 @@ Table product_tax {
 // 3. STOCK (FOTO ACTUAL)
 // ---------------------------------------------------------
 
-Table product_warehouse {
+Table product_variant_stock {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  warehouse_id unsignedbigint [note: 'Referencia a la tabla warehouses']
-  product_id unsignedbigint [note: 'Referencia a la tabla products']
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  stockeable_type varchar(100) [note: 'Almacena la ruta del modelo para una relación polimórfica (usando "ELOQUENT") Ej: "\App\Warehouse" o "\App\Branch"  ']
+  stockeable_id unsignedbigint [note: 'Referencia al id del registro en el modelo relacionado)']
+  product_variant_id unsignedbigint [note: 'Referencia a la tabla products']
   available_stock decimal(15,4) [default: 0, note: 'Stock disponible para venta']
   physical_stock decimal(15,4) [default: 0, note: 'Stock físico en bodega']
   created_by unsignedbigint [note: 'Referencia a la tabla users, id del usuario que creó el registro']
@@ -295,34 +385,29 @@ Table product_warehouse {
 
 Table kardex {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  date timestamp [note: 'Fecha de generación del movimiento']
-  
-  // Ubicación y Producto
-  warehouse_id unsignedbigint [note: 'Referencia a la tabla warehouses, id del warehouse donde ocurre la acción']
-  product_id unsignedbigint [note: 'Referencia a la tabla products, id del producto afectado']
-  movement_type_id unsignedbigint [note: 'Referencia a la tabla movement_types, define si es entrada o salida (+ o -)']
-  
-  // Polimorfismo (La clave del sistema)
-  related_doc_id unsignedbigint [note: 'Referencia al id del registro en el modelo relacionado)']
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  transaction_date timestamp [note: 'Fecha de generación del movimiento']
+  stockeable_type varchar(100) [note: 'Almacena la ruta del modelo para una relación polimórfica (usando "ELOQUENT") Ej: "\App\Warehouse" o "\App\Branch"  ']
+  stockeable_id unsignedbigint [note: 'Referencia a la tabla warehouses, id del warehouse donde ocurre la acción']
+  product_variant_id unsignedbigint [note: 'Referencia a la tabla products, id del producto afectado']
+  type_stock_movement_id unsignedbigint [note: 'Referencia a la tabla types_stock_movements, define si es entrada o salida (+ o -)']
   related_doc_type varchar(100) [note: 'Almacena la ruta del modelo para una relación polimórfica (usando "ELOQUENT") Ej: "\App\ReferralGuide" , "\App\InvoicesSales",o "\App\InvoicesPurchase"  ']
-
-  // Valores matemáticos del movimiento
+  related_doc_id unsignedbigint [note: 'Referencia al id del registro en el modelo relacionado)']
   quantity decimal(15,4) [note: 'Cantidad movida (+ o -)']
   unit_cost decimal(15,4) [note: 'Costo unitario por item al momento del registro, sin ninguna impuestos (precio neto)']
   total_cost decimal(15,4) [note: 'quantity * unit_cost']
-  
-  // Saldos resultantes (Para auditoría rápida)
-  stock_balance decimal(15,4) [note: 'Stock despues del movimiento: stock anterior +/- quantity']
+  total_balance_value decimal(15,4) [note: 'Nuevo saldo total después del movimiento']
   average_cost_balance decimal(15,4) [note: 'Nuevo Costo Promedio después del movimiento: (solo si es entrada(+) de inventario)']
-  
-  created_at timestamp [note: 'Fecha de creación del registro en la base de datos']
+  before_stock decimal(15,4) [note: 'Stock antes del movimiento: stock anterior']
+  after_stock decimal(15,4) [note: 'Stock después del movimiento: before_stock +/- quantity']
   created_by unsignedbigint [note: 'Referencia a la tabla users,id del usuario que provocó el movimiento']
-
+  created_at timestamp [note: 'Fecha de creación del registro en la base de datos']
   indexes {
-    (product_id, warehouse_id) [name: 'kardex_product_warehouse_idx']
-    (related_doc_type, related_doc_id) [name: 'kardex_polymorphic_idx']
-    date [name: 'kardex_date_idx']
+    (company_id, product_variant_id, stockeable_id) [name: "idx_kardex_lookup"]
+    (related_doc_type, related_doc_id) [name: "idx_kardex_related_doc"]
+    (stockeable_type, stockeable_id) [name: "idx_kardex_location"]
+    transaction_date [name: "idx_kardex_date"]
+    created_by [name: "idx_kardex_user"]
   }
 }
 
@@ -332,72 +417,84 @@ Table kardex {
 
 Table purchase_orders {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   supplier_id unsignedbigint [note: 'Referencia a la tabla suppliers']
-  warehouse_id unsignedbigint [note: 'A dónde entra la mercancía']
-  date timestamp [note: 'Fecha de generación de la orden de compra'] 
   status enum('draft', 'ordered', 'partial','delivered', 'cancelled')
-  payment_status enum('unpaid', 'partial', 'paid') [note: 'Estado del pago de la orden de compra']
-
+  status_payment enum('unpaid', 'partial', 'paid') [note: 'Estado del pago de la orden de compra']
+  stockeable_type varchar(100) [note: 'Almacena la ruta del modelo para una relación polimórfica (usando "ELOQUENT") Ej: "\App\Warehouse" o "\App\Branch"  ']
+  stockeable_id unsignedbigint [note: 'Referencia al id del registro en el modelo relacionado)']
+  transaction_date timestamp [note: 'Fecha de generación de la orden de compra'] 
   scheduled_delivery_date timestamp [null, note: 'Fecha estimada de entrega por parte del proveedor']
   delivery_deadline timestamp [null, note: 'Fecha límite acordada para la entrega']
-
   supplier_invoice_number varchar [note: 'El folio de la factura del proveedor']
   total_amount decimal(15,4) [note: 'Monto total de la orden de compra']
   notes text [null, note: 'Notas adicionales sobre la orden de compra']
-  
   created_by unsignedbigint [not null, note: 'Id de usuario que creó la orden de compra']
   created_at timestamp [not null, note: 'Fecha de registro de la orden de compra en la base de datos']
+  updated_at timestamp [not null, note: 'Fecha de última actualización de la orden de compra en la base de datos']
 }
 
-Table purchase_items {
+Table purchase_order_items {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   purchase_order_id unsignedbigint [null, note: 'Referencia a la tabla purchase_orders']
-  product_id unsignedbigint [null,note: 'Referencia a la tabla products']
+  product_variant_id unsignedbigint [null,note: 'Referencia a la tabla products']
   quantity decimal(15,4) [note: 'Cantidad de producto']
   actual_delivery_date timestamp [null, note: 'Fecha real de recepción del producto']
   entered_price decimal(15,4) [note: 'Precio digitado por el usuario']
-  tax_included boolean [default:false, note: 'True si el precio incluye impuestos'] 
   calculated_net_cost decimal(15,4) [note: 'Costo neto calculado (sin impuestos)'] 
   total_item_net decimal(15,4) [note: 'calculated_net_cost * quantity']
   created_at timestamp [note: 'Fecha de registro del ítem en la base de datos']
+  updated_at timestamp [note: 'Fecha de última actualización del ítem en la base de datos']
 }
 
 Table purchase_item_tax {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  purchase_item_id unsignedbigint [note: 'Referencia a la tabla purchase_items'] 
-  tax_id unsignedbigint [note: 'Referencia a la tabla taxes'] 
-  
-  tax_rate decimal(5,2) [note: 'Copia de la tasa en el momento de la compra'] 
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  purchase_order_item_id unsignedbigint [note: 'Referencia a la tabla purchase_order_items'] 
+  type_tax_id unsignedbigint [note: 'Referencia a la tabla taxes'] 
+  tax_rate decimal(15,4) [note: 'Copia de la tasa en el momento de la compra'] 
   tax_amount decimal(15,4) [note: 'Monto de dinero de este impuesto para este item'] 
+  is_fixed boolean [default: false, note: 'True si es un monto fijo en lugar de un porcentaje']
+  created_at timestamp [note: 'Fecha de registro del ítem en la base de datos']
+  updated_at timestamp [note: 'Fecha de última actualización del ítem en la base de datos']
 
   note: 'Tabla pivote para relación muchos a muchos entre las tablas purchase_items y taxes'
 }
 
-Table invoices_purchases{
+Table purchase_invoices{
   id unsignedbigint [primary key,increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  supplier_id unsignedbigint [not null, note: 'Referencia a la tabla suppliers']
+  status enum('draft', 'issued', 'rejected', 'returned') [default: 'issued']
+  status_payment enum('unpaid', 'partial', 'paid') [note: 'Estado del pago de la factura de compra']
+  type_tax_document_id unsignedbigint [note: 'Referencia a la tabla types_tax_documents, tipo de comprobante de compra']
   series varchar(20) [note: 'Ej: F001']
-  number varchar(20) [note: 'Ej: 000045']
-  date timestamp [note: 'Fecha de emisión']
-  supplier_id unsignedbigint [note: 'Referencia a la tabla suppliers']
-  net_price decimal(15,4) [note: 'Monto neto de la factura']
-  tax_amount decimal(15,4) [note: 'Monto total de impuestos']
-  total_amount decimal(15,4) [note: 'Monto total de la factura']
-  status enum('draft', 'issued', 'paid', 'cancelled') [default: 'issued']
+  correlative varchar(20) [note: 'Ej: 000045']
+  issue_date timestamp [not null, note:'Fecha de emisión del comprobante']
+  arrival_date timestamp [not null, note: 'Fecha de recepción de la factura']
+  returned_date timestamp [null, note: 'Fecha de devolución de la factura']
+  expiration_date timestamp [null, note: 'Fecha de vencimiento de pago de la factura']
+  net_amount decimal(15,4) [note: 'Monto neto de la factura, sin impuestos']
+  tax_amount decimal(15,4) [note: 'Monto total de impuestos, suma de todos los impuestos aplicados']
+  total_amount decimal(15,4) [note: 'Monto total de la factura, incluyendo impuestos']
   created_by unsignedbigint [note: 'Referencia a la tabla users, id del usuario que creó la factura']
   created_at timestamp [note: 'Fecha de registro de la factura en la base de datos']
+  updated_at timestamp [note: 'Fecha de última actualización de la factura en la base de datos']
+  indexes {
+    (company_id, supplier_id, series, correlative) [unique, name: "idx_unique_purchase"]
+    (company_id, status_payment, expiration_date) [name: "idx_accounts_payable"]
+    supplier_id [name: "idx_purchase_supplier"]
+  }
 }
 
-Table invoices_purchases_items{
+Table purchase_invoice_items{
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   invoice_purchase_id unsignedbigint [note: 'Referencia a la tabla invoices_purchases']
-  product_id unsignedbigint [note: 'Referencia a la tabla products']
+  product_variant_id unsignedbigint [note: 'Referencia a la tabla products']
   quantity decimal(15,4) [note: 'Cantidad comprada']
-  net_price decimal(15,4) [note: 'Precio neto al momento']
+  net_price decimal(15,4) [note: 'Precio neto del producto al momento']
   tax_amount decimal(15,4) [note: 'Monto total de impuestos para este ítem']
   total_amount decimal(15,4) [note: 'Precio total (quantity * (tax_amount + net_price))']
   created_at timestamp [note: 'Fecha de registro del ítem en la base de datos'] 
@@ -409,44 +506,32 @@ Table invoices_purchases_items{
 
 Table sales_orders {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   customer_id unsignedbigint [note: 'Referencia a la tabla customers, id del cliente que realiza la compra']  
   warehouse_id unsignedbigint [note: 'Referencia a la tabla warehouses, id del almacén desde donde se despacha la venta']
-  sale_origin_id unsignedbigint [note: 'Referencia a la tabla sales_origins, Ej: POS, APP, WEB'] 
-
+  sale_channel_id  unsignedbigint [note: 'Referencia a la tabla sales_origins, Ej: POS, APP, WEB'] 
   internal_series varchar(20) [note: 'Ej: F001']
   internal_number varchar(20) [note: 'Ej: 000045']
-
-  // Estados generales de la venta
   status enum('pending','partial', 'completed', 'cancelled', 'returned') [note: 'Estado general de la orden de venta']
   payment_status enum('unpaid', 'partial', 'paid') [note: 'Estado del pago']
-
-  // Datos Financieros (Facturación)
   subtotal_amount decimal(15,4) [note: 'Subtotal de la orden de venta, sin impuestos ni cargos']
   tax_amount decimal(15,4) [note: 'Monto total de impuestos de la orden de venta']
   total_amount decimal(15,4) [note: 'Total de la venta (subtotal + impuestos + cargos)']
-
   payment_surcharge decimal(15,4) [default: 0, note: 'Cargo adicional por método de pago, si aplica, añadir como un ítem separado']
-  
-  // Hitos de vida de la venta
   completed_at timestamp [null, note: 'Fecha de cumplimiento total de la venta']
   cancelled_at timestamp [null, note: 'Fecha de cancelación total de la venta']
   returned_at timestamp [null, note: 'Fecha de devolución total de la venta']
-
-  // Auditoría
   created_by unsignedbigint [note: 'Id de usuario que realizó la venta']
-  
-  // Timestamps
   created_at timestamp [not null, note: 'Fecha de registro de la venta en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
 }
 
 Table sales_items {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   
   sales_order_id unsignedbigint [note: 'Referencia a la tabla sales_orders']
-  product_id unsignedbigint [note: 'Referencia a la tabla products, id del producto reservado']
+  product_variant_id unsignedbigint [note: 'Referencia a la tabla products, id del producto reservado']
   
   // Precios y Cantidades
   net_price decimal(15,4) [note: 'Precio neto al momento en que se hizo la reserva']
@@ -473,7 +558,7 @@ Table sales_items {
 
 Table sales_item_tax {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   sales_item_id unsignedbigint
   tax_id unsignedbigint
   tax_rate decimal(5,2)
@@ -483,7 +568,7 @@ Table sales_item_tax {
 Table invoices_sales{
   id unsignedbigint [primary key,increment]
    
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   
   // Identificación de la factura
   series varchar(20) [note: 'Ej: F001']
@@ -520,9 +605,9 @@ Table invoices_sales{
 
 Table invoices_sales_items{
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   invoice_sale_id unsignedbigint [note: 'Referencia a la tabla invoices_sales']
-  product_id unsignedbigint [note: 'Referencia a la tabla products']
+  product_variant_id unsignedbigint [note: 'Referencia a la tabla products']
   quantity decimal(15,4) [note: 'Cantidad vendida']
   net_price decimal(15,4) [note: 'Precio de venta al momento']
   tax_amount decimal(15,4) [note: 'Monto total de impuestos para este ítem']
@@ -535,10 +620,12 @@ Table invoices_sales_items{
 // ---------------------------------------------------------
 Table internal_transfer_order {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  from_warehouse_id unsignedbigint [note: 'Referencia a la tabla warehouses (origen)']
-  to_warehouse_id unsignedbigint [note: 'Referencia a la tabla warehouses (destino)']
-  date timestamp [note: 'Fecha de la creación del traslado']
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  from_stockeable_type unsignedbigint [note: 'Referencia a la tabla warehouses (origen)']
+  from_stockeable_id unsignedbigint [note: 'Referencia a la tabla warehouses (origen)']
+  to_stockeable_type unsignedbigint [note: 'Referencia a la tabla warehouses (destino)']
+  to_stockeable_id unsignedbigint [note: 'Referencia a la tabla warehouses (destino)']
+  transaction_date timestamp [note: 'Fecha de la creación del traslado']
   reason varchar(255) [null,note: 'Motivo del traslado']
   status enum('draft', 'in_transit', 'completed', 'cancelled')
   created_by unsignedbigint [note: 'Id de usuario que creó el traslado']
@@ -547,9 +634,9 @@ Table internal_transfer_order {
 
 Table internal_transfers_item {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   internal_transfer_id unsignedbigint [note: 'Referencia a la tabla internal_transfers']
-  product_id unsignedbigint [note: 'Referencia a la tabla products']
+  product_variant_id unsignedbigint [note: 'Referencia a la tabla products']
   quantity decimal(15,4) [note: 'Cantidad a trasladar']
   unit_amount decimal(15,4) [note: 'Precio de venta al momento']
   tax_amount decimal(15,4) [note: 'Monto total de impuestos para este ítem']
@@ -564,7 +651,7 @@ Table internal_transfers_item {
 
 Table inventory_adjustments {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   warehouse_id unsignedbigint
   reason varchar [note: 'Ej: Merma, Robo, Conteo Inicial']
   date timestamp
@@ -575,9 +662,9 @@ Table inventory_adjustments {
 
 Table inventory_adjustment_items {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   adjustment_id unsignedbigint [note: 'Referencia a la tabla inventory_adjustments']
-  product_id unsignedbigint [note: 'Referencia a la tabla products']
+  product_variant_id unsignedbigint [note: 'Referencia a la tabla products']
   current_stock decimal(15,4) [note: 'Stock antes del ajuste']
   adjusted_quantity decimal(15,4) [note: 'Cantidad a sumar/restar']
 }
@@ -588,8 +675,8 @@ Table inventory_adjustment_items {
 
 Table tax_product {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
-  product_id unsignedbigint [not null, note: 'Referencia a la tabla products']
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  product_variant_id unsignedbigint [not null, note: 'Referencia a la tabla products']
   tax_id unsignedbigint [not null, note: 'Referencia a la tabla sunat_codes, id del impuesto aplicado al producto']
   deleted_at timestamp [null,  note:'Fecha de registro de eliminación suave']
   note: 'Tabla pivote para relación muchos a muchos entre productos e impuestos'
@@ -601,7 +688,7 @@ Table tax_product {
 // ---------------------------------------------------------
 Table cash_registers {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   
   // Ubicación
   warehouse_id unsignedbigint [note: 'A qué sucursal pertenece (Ej: Tienda Juliaca)']
@@ -629,7 +716,7 @@ Table cash_registers {
 
 Table cash_register_shifts {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   
   // Relaciones (Quién y Dónde)
   cash_register_id unsignedbigint [note: 'Referencia a la tabla cash_registers, id de la caja registradora']
@@ -670,7 +757,7 @@ Table cash_register_shifts {
 // ---------------------------------------------------------
 Table referral_guides{
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
 
   transmitter_id unsignedbigint [note: 'Referencia a la tabla suppliers o company_settings, dependiendo si somos vendedores o compradores']
   receiver_id unsignedbigint [note: 'Referencia a la tabla customers o company_settings, dependiendo si somos vendedores o compradores']
@@ -694,16 +781,16 @@ Table referral_guides{
 
   // INFORMACIÓN DEL EMISOR
   origin_address varchar(255) [note: 'Dirección de origen, se puede copiar de la dirección del proveedor']
-  origin_departament varchar(50) [null, note: 'Departamento de origen, se puede copiar del departamento del proveedor']
-  origin_province varchar(50) [null, note: 'Provincia de origen, se puede copiar de la provincia del proveedor']
-  origin_district varchar(50) [null, note: 'Distrito de origen, se puede copiar del distrito del proveedor']
+  origin_region_id varchar(50) [null, note: 'region_ido de origen, se puede copiar del region_ido del proveedor']
+  origin_province_id varchar(50) [null, note: 'Provincia de origen, se puede copiar de la provincia del proveedor']
+  origin_district_id varchar(50) [null, note: 'Distrito de origen, se puede copiar del distrito del proveedor']
 
 
   // INFORMACIÓN DEL RECEPTOR
   destination_address varchar(255) [note: 'Dirección de destino, se puede copiar de la dirección de la sucursal']
-  destination_departament varchar(50) [null, note: 'Departamento de destino, se puede copiar del departamento de la sucursal']
-  destination_province varchar(50) [null, note: 'Provincia de destino, se puede copiar de la provincia de la sucursal']
-  destination_district varchar(50) [null, note: 'Distrito de destino, se puede copiar del distrito de la sucursal']
+  destination_region_id varchar(50) [null, note: 'region_ido de destino, se puede copiar del region_ido de la sucursal']
+  destination_province_id varchar(50) [null, note: 'Provincia de destino, se puede copiar de la provincia de la sucursal']
+  destination_district_id varchar(50) [null, note: 'Distrito de destino, se puede copiar del distrito de la sucursal']
  
   net_price decimal(15,4) [note: 'Valor total de la mercancía sin impuestos']
   total_tax decimal(15,4) [note: 'Monto total de impuestos aplicados']
@@ -725,9 +812,9 @@ Table referral_guides{
 
 Table referral_guides_items {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   referral_guide_id unsignedbigint [note: 'Referencia a la tabla purchase_referral_guides']
-  product_id unsignedbigint [note: 'Referencia a la tabla products']
+  product_variant_id unsignedbigint [note: 'Referencia a la tabla products']
   quantity decimal(15,4) [note: 'Cantidad de producto en la guía de remisión']
   gross_weight decimal(15,4) [null, note: 'Peso bruto del producto (kg)']
   net_weight decimal(15,4) [null, note: 'Peso neto del producto (kg)']
@@ -743,7 +830,7 @@ Table referral_guides_items {
 
 Table accounts {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   name varchar(100) [note: 'Nombre de la cuenta (Ej: Caja Chica, Banco BBVA, etc.)']
   description varchar(255) [null, note: 'Descripción adicional de la cuenta']
   account_type enum('cash', 'bank', 'credit_card', 'other') [note: 'Tipo de cuenta']
@@ -754,7 +841,7 @@ Table accounts {
 
 Table transactions {
   id unsignedbigint [primary key, increment]
-  team_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
+  company_id unsignedbigint [not null, note:"Referencia a la tabla teams, id del team al cual pertenece el usuario"]
   
   // Dónde entra/sale el dinero (Caja Chica, BCP, Interbank)
   account_id unsignedbigint [note: 'Ref a accounts. Vital para saber el saldo.']
@@ -797,98 +884,155 @@ Table transactions {
 }
 
 // ---------------------------------------------------------
-// 14. TEAMS (SaaS)
+// 14. Compañias (SaaS)
 // ---------------------------------------------------------
 
-Table teams {
+Table companies {
   id unsignedbigint [primary key, increment]
-  name varchar(100) [not null, note: 'Nombre del equipo o empresa']
-  plan_type enum('free', 'basic', 'pro', 'enterprise') [default: 'basic', note: 'Tipo de plan contratado']
+  name varchar(100) [not null, note: 'Nombre de la compañia o empresa']
+  plan_type enum('demo','free', 'basic', 'pro', 'enterprise') [default: 'basic', note: 'Tipo de plan contratado']
   slug varchar(100) [not null, unique, note: 'Identificador único para URLs y subdominios']
   created_at timestamp [not null, note: 'Fecha de creación del registro en la base de datos']
   updated_at timestamp [not null, note: 'Fecha de última actualización del registro en la base de datos']
-  is_active boolean [default: true, note: 'Indica si el equipo está activo o inactivo']
+  is_active boolean [default: true, note: 'Indica si la compañia está activa o inactiva']
 }
+
+// agregar planes, suscripciones, etc.
+
 
 // ---------------------------------------------------------
 // RELACIONES (FOREIGN KEYS)
 // ---------------------------------------------------------
 
-// PRODUCTOS
-Ref: products.category_id > categories.id
-Ref: products.unit_id > sunat_codes.id
+// USERS
+Ref: users.company_id > companies.id
+Ref: users.created_by > users.id
+
+// REGIONS
+Ref: regions.country_id > countries.id
+
+// PROVINCES
+Ref: provinces.region_id > regions.id
+
+// DISTRICTS
+Ref: districts.province_id > provinces.id
+
+// BRANCHES
+Ref: branches.company_id > companies.id
+Ref: branches.region_id > regions.id
+Ref: branches.province_id > provinces.id
+Ref: branches.district_id > districts.id
+Ref: branches.country_id > countries.id
+Ref: branches.created_by > users.id
+
+// WAREHOUSES
+Ref: warehouses.company_id > companies.id
+Ref: warehouses.created_by > users.id
+
+// SUPPLIERS
+Ref: suppliers.company_id > companies.id
+Ref: suppliers.created_by > users.id
+
+// CUSTOMERS
+Ref: customers.company_id > companies.id
+Ref: customers.created_by > users.id
+
+// SUNAT_CATALOGS
+Ref: sunat_catalogs.created_by > users.id
+
+// SUNAT_CODES
+Ref: sunat_codes.sunat_catalog_id > sunat_catalogs.id
+Ref: sunat_codes.created_by > users.id
+
+// TAXES 
+Ref: types_taxes.sunat_code_id > sunat_codes.id
+Ref: types_taxes.created_by > users.id
+
+//
+
+// BASE_PRODUCTS
+Ref: base_products.company_id > companies.id
+Ref: base_products.brand_id > brands.id
+Ref: base_products.category_id > categories.id
+Ref: base_products.unit_measurement_id > sunat_codes.id
+Ref: base_products.created_by > users.id
+
+// PRODUCT_VARIANTS
+Ref: product_variants.company_id > companies.id
+Ref: product_variants.base_product_id > base_products.id
+
+// PRODUCT_VARIANT_OPTIONS 
+Ref: product_variant_options.company_id > companies.id
+Ref: product_variant_options.product_variant_id > product_variants.id
+
+// PRODUCT_VARIANT_VALUES
+Ref: product_variant_values.company_id > companies.id
+Ref: product_variant_values.product_variant_option_id > product_variant_options.id
+
+// PRODUCT_VARIANT_TAX
+Ref: product_variant_tax.company_id > companies.id
+Ref: product_variant_tax.product_variant_id > product_variants.id
+Ref: product_variant_tax.type_tax_id > types_taxes.id
+
+
 Ref: categories.parent_id > categories.id
-Ref: products.brand_id > brands.id
-Ref: tax_product.product_id > products.id
+Ref: tax_product.product_variant_id > base_products.id
 Ref: tax_product.tax_id > sunat_codes.id
 
+
+
 // STOCK SNAPSHOT
-Ref: product_warehouse.product_id > products.id
-Ref: product_warehouse.warehouse_id > warehouses.id
+Ref: product_variant_stock.product_variant_id > base_products.id
+
 
 // KARDEX
-Ref: kardex.product_id > products.id
-Ref: kardex.warehouse_id > warehouses.id
-Ref: kardex.movement_type_id > movement_types.id
+Ref: kardex.product_variant_id > base_products.id
+Ref: kardex.type_stock_movement_id > types_stock_movements.id
 Ref: kardex.created_by > users.id
 
 // COMPRAS
 Ref: purchase_orders.supplier_id > suppliers.id
-Ref: purchase_orders.warehouse_id > warehouses.id
 Ref: purchase_orders.created_by > users.id
-Ref: purchase_items.purchase_order_id > purchase_orders.id
-Ref: purchase_items.product_id > products.id
-Ref: purchase_items.id < purchase_item_tax.purchase_item_id
-Ref: purchase_item_tax.tax_id > sunat_codes.id
+Ref: purchase_order_items.purchase_order_id > purchase_orders.id
+Ref: purchase_order_items.product_variant_id > base_products.id
+Ref: purchase_order_items.id < purchase_item_tax.purchase_order_item_id
+Ref: purchase_item_tax.type_tax_id > sunat_codes.id
 
 // VENTAS
 Ref: sales_orders.customer_id > customers.id
 Ref: sales_orders.warehouse_id > warehouses.id
 Ref: sales_orders.created_by > users.id
 Ref: sales_items.sales_order_id > sales_orders.id
-Ref: sales_items.product_id > products.id
-Ref: sales_origins.id < sales_orders.sale_origin_id
+Ref: sales_items.product_variant_id > base_products.id
+Ref: sales_channels.id < sales_orders.sale_channel_id 
 
 // TRANSFERENCIAS INTERNAS
 Ref: internal_transfers_item.internal_transfer_id > internal_transfer_order.id 
-Ref: internal_transfer_order.from_warehouse_id > warehouses.id
-Ref: internal_transfer_order.to_warehouse_id > warehouses.id
 Ref: internal_transfer_order.created_by > users.id
 
 // AJUSTES DE INVENTARIO
 Ref: inventory_adjustments.warehouse_id > warehouses.id
 Ref: inventory_adjustments.created_by > users.id
 Ref: inventory_adjustment_items.adjustment_id > inventory_adjustments.id
-Ref: inventory_adjustment_items.product_id > products.id
+Ref: inventory_adjustment_items.product_variant_id > base_products.id
 
 // CAJAS REGISTRADORAS Y TURNOS
 Ref: cash_registers.warehouse_id > warehouses.id
 Ref: cash_register_shifts.cash_register_id > cash_registers.id
 Ref: cash_register_shifts.user_id > users.id   
 
-// CATALOGOS SUNAT
-Ref: sunat_codes.sunat_catalog_id > sunat_catalogs.id
 
 // MANEJO DE DINERO
 Ref: transactions.account_id > accounts.id
 Ref: transactions.payment_method_id > payment_methods.id
-Ref: transactions.movement_type_id > movement_types.id
+Ref: transactions.movement_type_id > types_stock_movements.id
 Ref: transactions.cash_register_shift_id > cash_register_shifts.id
 Ref: transactions.parent_transaction_id > transactions.id
 Ref: transactions.created_by > users.id
 
-// TEAMS
-Ref: users.team_id > teams.id
-Ref: warehouses.team_id > teams.id
-Ref: suppliers.team_id > teams.id
-Ref: customers.team_id > teams.id
-Ref: sunat_catalogs.team_id > teams.id
-Ref: sunat_codes.team_id > teams.id
-Ref: movement_types.team_id > teams.id
-Ref: categories.team_id > teams.id
-Ref: brands.team_id > teams.id
-Ref: sales_origins.team_id > teams.id
-Ref: payment_methods.team_id > teams.id
-Ref: products.team_id > teams.id
-Ref: product_warehouse.team_id > teams.id
-Ref: referral_guides_items.team_id > teams.id
+// COMPANIAS
+Ref: categories.company_id > companies.id
+Ref: brands.company_id > companies.id
+Ref: payment_methods.company_id > companies.id
+Ref: product_variant_stock.company_id > companies.id
+Ref: referral_guides_items.company_id > companies.id
