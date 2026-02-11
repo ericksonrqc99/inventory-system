@@ -1,0 +1,27 @@
+id,name,country_id,country_code,country_name,iso2,iso3166_2,fips_code,type,level,parent_id,native,latitude,longitude,timezone,wikiDataId,population
+3685,Amazonas,173,PE,Peru,AMA,PE-AMA,01,region,,,Amazonas,-5.0,-78.0,America/Lima,Q201162,
+3680,Áncash,173,PE,Peru,ANC,PE-ANC,02,region,,,Áncash,-9.5,-77.75,America/Lima,Q205089,1194200.0
+3699,Apurímac,173,PE,Peru,APU,PE-APU,03,region,,,Apurímac,-14.0,-73.0,America/Lima,Q208185,
+3681,Arequipa,173,PE,Peru,ARE,PE-ARE,04,region,,,Arequipa,-16.3988667,-71.5369607,America/Lima,Q205068,
+3692,Ayacucho,173,PE,Peru,AYA,PE-AYA,05,region,,,Ayacucho,-13.1638737,-74.2235641,America/Lima,Q205112,180766.0
+3688,Cajamarca,173,PE,Peru,CAJ,PE-CAJ,06,region,,,Cajamarca,-7.1617465,-78.5127855,America/Lima,Q205078,201329.0
+3701,Callao,173,PE,Peru,CAL,PE-CAL,07,region,,,Callao,-12.0522626,-77.1391133,America/Lima,Q2071352,1300000.0
+3691,Cusco,173,PE,Peru,CUS,PE-CUS,08,region,,,Cúsa,-13.5170887,-71.9785356,America/Lima,Q205057,428450.0
+3679,Huancavelica,173,PE,Peru,HUV,PE-HUV,09,region,,,Huancavelica,-12.7861978,-74.9764024,America/Lima,Q505220,49570.0
+3687,Huanuco,173,PE,Peru,HUC,PE-HUC,10,region,,,Huanuco,-9.9207648,-76.2410843,America/Lima,Q215221,196627.0
+3700,Ica,173,PE,Peru,ICA,PE-ICA,11,region,,,ICA,-14.0640967,-75.7290915,America/Lima,Q208186,
+3693,Junín,173,PE,Peru,JUN,PE-JUN,12,region,,,Junín,-11.1581925,-75.9926306,America/Lima,Q207973,
+3683,La Libertad,173,PE,Peru,LAL,PE-LAL,13,region,,,La Libertad,-8.0,-78.5,America/Lima,Q205126,
+3702,Lambayeque,173,PE,Peru,LAM,PE-LAM,14,region,,,Lambayeque,-6.703027,-79.9065086,America/Lima,Q210061,
+3695,Lima,173,PE,Peru,LIM,PE-LIM,15,region,,,Lima,-12.0621065,-77.0365256,America/Lima,Q211795,
+4922,Loreto,173,PE,Peru,LOR,PE-LOR,16,region,,,Loreto,-4.0,-75.166667,America/Lima,Q200938,
+3678,Madre de Dios,173,PE,Peru,MDD,PE-MDD,17,region,,,Madre de Dios,-12.0,-70.25,America/Lima,Q210896,
+3698,Moquegua,173,PE,Peru,MOQ,PE-MOQ,18,region,,,Moquegua,-17.1927361,-70.9328138,America/Lima,Q208182,69882.0
+5687,Municipalidad Metropolitana de Lima,173,PE,Peru,LMA,PE-LMA,,municipality,,,Municipalidad Metropolitana de Lima,-12.0464,-77.0428,America/Lima,Q2868,
+3686,Pasco,173,PE,Peru,PAS,PE-PAS,19,region,,,Pasto,-10.7246926,-76.1657305,America/Lima,Q211208,
+3697,Piura,173,PE,Peru,PIU,PE-PIU,20,region,,,Piura,-5.1971376,-80.6267237,America/Lima,Q208183,630244.0
+3682,Puno,173,PE,Peru,PUN,PE-PUN,21,region,,,Mucho,-15.8402218,-70.0218805,America/Lima,Q205104,128637.0
+3694,San Martín,173,PE,Peru,SAM,PE-SAM,22,region,,,San Martín,-6.4095133,-76.8712581,America/Lima,Q211793,
+3696,Tacna,173,PE,Peru,TAC,PE-TAC,23,region,,,Tacna,-18.0065679,-70.2462741,America/Lima,Q207413,286240.0
+3689,Tumbes,173,PE,Peru,TUM,PE-TUM,24,region,,,Tumbes,-3.5707875,-80.4596454,America/Lima,Q209597,
+3684,Ucayali,173,PE,Peru,UCA,PE-UCA,25,region,,,Ucayali,-9.0,-73.5,America/Lima,Q207424,

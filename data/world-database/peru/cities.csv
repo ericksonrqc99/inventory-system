@@ -1,0 +1,486 @@
+id,name,state_id,state_code,state_name,country_id,country_code,country_name,latitude,longitude,native,type,level,parent_id,population,timezone,wikiDataId
+80572,Bagua Grande,3685,AMA,Amazonas,173,PE,Peru,-5.75611,-78.44111,Bagua Grande,adm3,,,20382.0,America/Lima,Q793765
+80582,Cajaruro,3685,AMA,Amazonas,173,PE,Peru,-5.73639,-78.42556,Vale,adm3,,,7281.0,America/Lima,Q205119
+80602,Chachapoyas,3685,AMA,Amazonas,173,PE,Peru,-6.23169,-77.86903,Chachapoyas,adm1,,,32026.0,America/Lima,Q757133
+80632,Condorcanqui,3685,AMA,Amazonas,173,PE,Peru,-4.16515,-78.0384,Condorcanqui,city,,,42470.0,America/Lima,Q1288434
+80689,La Peca,3685,AMA,Amazonas,173,PE,Peru,-5.61111,-78.435,La Peca,adm3,,,27045.0,America/Lima,Q1759360
+80781,Provincia de Bagua,3685,AMA,Amazonas,173,PE,Peru,-5.09006,-78.39972,Provincia de Bagua,adm3,,,74100.0,America/Lima,Q1366082
+80784,Provincia de Bongará,3685,AMA,Amazonas,173,PE,Peru,-5.68341,-77.87308,Provincia de Bongará,city,,,25637.0,America/Lima,Q1342814
+80803,Provincia de Chachapoyas,3685,AMA,Amazonas,173,PE,Peru,-6.2748,-77.81067,Provincia de Chachapoyas,adm3,,,55506.0,America/Lima,Q997406
+80857,Provincia de Luya,3685,AMA,Amazonas,173,PE,Peru,-6.41667,-78.0,Provincia de Luya,adm3,,,44436.0,America/Lima,Q268277
+80885,Provincia de Rodríguez de Mendoza,3685,AMA,Amazonas,173,PE,Peru,-6.33333,-77.41667,Provincia de Rodríguez de Mendoza,adm3,,,29998.0,America/Lima,Q1366038
+81006,Utcubamba,3685,AMA,Amazonas,173,PE,Peru,-5.77031,-78.3285,Utcubamba,adm3,,,107237.0,America/Lima,Q941183
+80564,Asuncion,3680,ANC,Áncash,173,PE,Peru,-9.18987,-77.39878,Asunción,adm3,,,7378.0,America/Lima,Q1166116
+80594,Carás,3680,ANC,Áncash,173,PE,Peru,-9.04692,-77.80901,Carás,city,,,503.0,America/Lima,Q1035471
+80592,Carhuaz,3680,ANC,Áncash,173,PE,Peru,-9.28194,-77.64472,Carhuaz,adm3,,,5044.0,America/Lima,Q1036082
+80593,Carlos Fermin Fitzcarrald,3680,ANC,Áncash,173,PE,Peru,-9.04415,-77.24168,Carlos Fermin Fitzcarrald,adm3,,,17717.0,America/Lima,Q633478
+80615,Chimbote,3680,ANC,Áncash,173,PE,Peru,-9.08528,-78.57833,Chimbote,adm3,,,395100.0,America/Lima,Q518431
+80628,Coishco,3680,ANC,Áncash,173,PE,Peru,-9.02306,-78.61556,Coishco,adm3,,,15979.0,America/Lima,Q3344173
+80656,Huaraz,3680,ANC,Áncash,173,PE,Peru,-9.52779,-77.52778,En Huaraz,adm1,,,118836.0,America/Lima,Q793809
+80658,Huarmey,3680,ANC,Áncash,173,PE,Peru,-10.06806,-78.15222,Huarmey,adm3,,,16172.0,America/Lima,Q430862
+80766,Pomabamba,3680,ANC,Áncash,173,PE,Peru,-8.83333,-77.46667,Pomabamba,adm3,,,4453.0,America/Lima,Q3322611
+80770,Provincia de Aija,3680,ANC,Áncash,173,PE,Peru,-9.83333,-77.66667,Provincia de Aija,adm3,,,332.0,America/Lima,Q615891
+80776,Provincia de Antonio Raymondi,3680,ANC,Áncash,173,PE,Peru,-9.08333,-77.08333,Provincia de Antonio Raymondi,adm3,,,13650.0,America/Lima,Q1166121
+80782,Provincia de Bolognesi,3680,ANC,Áncash,173,PE,Peru,-10.10723,-77.14804,Provincia de Bolognesi,adm3,,,681.0,America/Lima,Q1166113
+80796,Provincia de Carhuaz,3680,ANC,Áncash,173,PE,Peru,-9.317,-77.551,Provincia de Carhuaz,city,,,45184.0,America/Lima,Q1166126
+80797,Provincia de Casma,3680,ANC,Áncash,173,PE,Peru,-9.47638,-78.24738,Provincia de Casma,adm3,,,50989.0,America/Lima,Q747503
+80816,Provincia de Corongo,3680,ANC,Áncash,173,PE,Peru,-8.58333,-77.91667,Provincia de Corongo,adm3,,,0.0,America/Lima,Q1166124
+80837,Provincia de Huaraz,3680,ANC,Áncash,173,PE,Peru,-9.56109,-77.64605,Provincia de Huaraz,adm3,,,163936.0,America/Lima,Q1140995
+80838,Provincia de Huari,3680,ANC,Áncash,173,PE,Peru,-9.33333,-77.16667,Provincia de Huari,adm3,,,0.0,America/Lima,Q1779705
+80839,Provincia de Huarmey,3680,ANC,Áncash,173,PE,Peru,-9.91667,-78.0,Provincia de Huarmey,adm3,,,30560.0,America/Lima,Q1779624
+80841,Provincia de Huaylas,3680,ANC,Áncash,173,PE,Peru,-8.91667,-77.83333,Provincia de Huaylas,adm3,,,626.0,America/Lima,Q1779670
+80861,Provincia de Mariscal Luzuriaga,3680,ANC,Áncash,173,PE,Peru,-8.83333,-77.25,Provincia de Mariscal Luzuriaga,adm3,,,20284.0,America/Lima,Q1779663
+80871,Provincia de Pallasca,3680,ANC,Áncash,173,PE,Peru,-8.33333,-77.91667,Provincia de Pallasca,adm3,,,23491.0,America/Lima,Q1779654
+80880,Provincia de Pomabamba,3680,ANC,Áncash,173,PE,Peru,-8.82311,-77.47559,Provincia de Pomabamba,adm3,,,4453.0,America/Lima,Q1779643
+80883,Provincia de Recuay,3680,ANC,Áncash,173,PE,Peru,-10.0,-77.41667,Provincia de Recuay,adm3,,,17185.0,America/Lima,Q1779720
+80890,Provincia de Santa,3680,ANC,Áncash,173,PE,Peru,-9.0,-78.25,Provincia de Santa,adm3,,,435807.0,America/Lima,Q1779734
+80894,Provincia de Sihuas,3680,ANC,Áncash,173,PE,Peru,-8.5,-77.5,Provincia de Sihuas,city,,,26971.0,America/Lima,Q1779714
+80911,Provincia de Yungay,3680,ANC,Áncash,173,PE,Peru,-9.16667,-77.75,Provincia de Yungay,adm3,,,218.0,America/Lima,Q1798739
+80919,Puerto Santa,3680,ANC,Áncash,173,PE,Peru,-8.98772,-78.64727,Puerto Santa,city,,,14066.0,America/Lima,Q541435
+81017,Yauya,3680,ANC,Áncash,173,PE,Peru,-8.98333,-77.3,Venir,adm3,,,9092.0,America/Lima,Q2088849
+81018,Yungay,3680,ANC,Áncash,173,PE,Peru,-9.13833,-77.74361,Yungay,adm3,,,5269.0,America/Lima,Q919678
+80554,Abancay,3699,APU,Apurímac,173,PE,Peru,-13.63389,-72.88139,Abancay,adm1,,,72277.0,America/Lima,Q215238
+80559,Andahuaylas,3699,APU,Apurímac,173,PE,Peru,-13.65556,-73.38722,Andahuaylas,adm3,,,17444.0,America/Lima,Q489660
+80767,Provincia de Abancay,3699,APU,Apurímac,173,PE,Peru,-13.66667,-72.91667,Provincia de Abancay,adm1,,,110520.0,America/Lima,Q1771870
+80772,Provincia de Andahuaylas,3699,APU,Apurímac,173,PE,Peru,-13.66667,-73.41667,Provincia de Andahuaylas,adm3,,,142477.0,America/Lima,Q1798747
+80775,Provincia de Antabamba,3699,APU,Apurímac,173,PE,Peru,-14.41667,-72.75,Provincia de Antabamba,adm3,,,11310.0,America/Lima,Q1814228
+80779,Provincia de Aymaraes,3699,APU,Apurímac,173,PE,Peru,-14.41667,-73.25,Provincia de Aymaraes,adm3,,,24307.0,America/Lima,Q1814234
+80817,Provincia de Cotabambas,3699,APU,Apurímac,173,PE,Peru,-14.0,-72.2,Provincia de Cotabambas,city,,,50656.0,America/Lima,Q1814244
+80825,Provincia de Grau,3699,APU,Apurímac,173,PE,Peru,-14.0,-72.58333,Provincia de Grau,adm3,,,21242.0,America/Lima,Q1814172
+80984,Talavera,3699,APU,Apurímac,173,PE,Peru,-13.65306,-73.42917,Talavera,adm3,,,7381.0,America/Lima,Q723584
+80555,Acarí,3681,ARE,Arequipa,173,PE,Peru,-15.42393,-74.61361,Acarí,city,,,4445.0,America/Lima,Q25247498
+80561,Arequipa,3681,ARE,Arequipa,173,PE,Peru,-16.39889,-71.535,Arequipa,adm1,,,1008290.0,America/Lima,Q159273
+80588,Camaná,3681,ARE,Arequipa,173,PE,Peru,-16.62375,-72.71055,Camaná,city,,,16434.0,America/Lima,Q1028011
+80598,Ccolo,3681,ARE,Arequipa,173,PE,Peru,-15.50611,-71.49184,Ccolo,city,,,3857.0,America/Lima,Q3312424
+80619,Chivay,3681,ARE,Arequipa,173,PE,Peru,-15.63833,-71.60111,Chivay,adm3,,,4543.0,America/Lima,Q2351933
+80627,Cocachacra,3681,ARE,Arequipa,173,PE,Peru,-17.08833,-71.7575,Cocaquacra,adm3,,,8347.0,America/Lima,Q3344173
+80634,Cotahuasi,3681,ARE,Arequipa,173,PE,Peru,-15.21306,-72.88861,Cotahuasi,adm3,,,0.0,America/Lima,Q2638258
+80655,Huarancante,3681,ARE,Arequipa,173,PE,Peru,-15.76803,-71.45952,Kaurancante,city,,,4638.0,America/Lima,Q723677
+80657,Huarichancara,3681,ARE,Arequipa,173,PE,Peru,-15.63972,-71.06111,Huarichancara,city,,,4445.0,America/Lima,Q793809
+80673,Jatun Orcochiri,3681,ARE,Arequipa,173,PE,Peru,-15.75003,-71.34641,Gran Orcochiri,city,,,4358.0,America/Lima,Q1000341
+80677,Jayune,3681,ARE,Arequipa,173,PE,Peru,-15.56277,-71.30312,Jayune,city,,,4256.0,America/Lima,Q917434
+80704,Llongasora,3681,ARE,Arequipa,173,PE,Peru,-15.63951,-71.29921,Barco,city,,,4753.0,America/Lima,Q3344864
+80705,Lluta,3681,ARE,Arequipa,173,PE,Peru,-16.01472,-72.01417,Lluta,adm3,,,5998.0,America/Lima,Q3344864
+80717,Mollendo,3681,ARE,Arequipa,173,PE,Peru,-17.02306,-72.01472,Mollendo,adm3,,,28305.0,America/Lima,Q2351948
+80733,Orcopampa,3681,ARE,Arequipa,173,PE,Peru,-15.26611,-72.34167,Orcopampa,adm3,,,5643.0,America/Lima,Q916382
+80777,Provincia de Arequipa,3681,ARE,Arequipa,173,PE,Peru,-16.33333,-71.5,Provincia de Arequipa,city,,,583.0,America/Lima,Q601118
+80789,Provincia de Camaná,3681,ARE,Arequipa,173,PE,Peru,-16.41667,-72.83333,Provincia de Camaná,city,,,59370.0,America/Lima,Q1784851
+80795,Provincia de Caravelí,3681,ARE,Arequipa,173,PE,Peru,-15.58333,-74.0,Provincia de Caravelí,adm3,,,41346.0,America/Lima,Q1779727
+80798,Provincia de Castilla,3681,ARE,Arequipa,173,PE,Peru,-15.58333,-72.41667,Provincia de Castilla,city,,,33629.0,America/Lima,Q614628
+80800,Provincia de Caylloma,3681,ARE,Arequipa,173,PE,Peru,-15.66667,-71.58333,Provincia de Caylloma,adm3,,,86771.0,America/Lima,Q1806435
+80812,Provincia de Condesuyos,3681,ARE,Arequipa,173,PE,Peru,-15.58333,-72.83333,Provincia de Condesuyos,city,,,16118.0,America/Lima,Q1814253
+80845,Provincia de Islay,3681,ARE,Arequipa,173,PE,Peru,-17.0,-71.83333,Provincia de Islay,city,,,52034.0,America/Lima,Q1779688
+80851,Provincia de La Unión,3681,ARE,Arequipa,173,PE,Peru,-15.0,-72.83333,Provincia de La Unión,adm3,,,12827.0,America/Lima,Q1779698
+80914,Pucara,3681,ARE,Arequipa,173,PE,Peru,-15.97993,-71.45988,Pucara,city,,,4335.0,America/Lima,Q217071
+80923,Punta de Bombón,3681,ARE,Arequipa,173,PE,Peru,-17.1719,-71.7924,Punta de Bombón,adm3,,,6336.0,America/Lima,Q232842
+81012,Vizcachane,3681,ARE,Arequipa,173,PE,Peru,-15.80861,-71.20111,Vizcachane,city,,,4407.0,America/Lima,Q3344843
+81020,Yura,3681,ARE,Arequipa,173,PE,Peru,-16.25223,-71.67969,Yura,adm3,,,5686.0,America/Lima,Q2306609
+80568,Ayacucho,3692,AYA,Ayacucho,173,PE,Peru,-13.15878,-74.22321,Ayacucho,adm1,,,140033.0,America/Lima,Q504215
+80570,Ayna,3692,AYA,Ayacucho,173,PE,Peru,-12.65,-73.91667,Y el,city,,,4588.0,America/Lima,Q3344141
+80633,Coracora,3692,AYA,Ayacucho,173,PE,Peru,-15.03333,-73.78333,Coracora,adm3,,,7420.0,America/Lima,Q763662
+80653,Huanta,3692,AYA,Ayacucho,173,PE,Peru,-12.93333,-74.25,Huanta,adm3,,,18627.0,America/Lima,Q2158344
+80755,Paucar Del Sara Sara,3692,AYA,Ayacucho,173,PE,Peru,-15.12275,-73.26177,Paucar Del Sara Sara,city,,,9609.0,America/Lima,Q1806437
+80792,Provincia de Cangallo,3692,AYA,Ayacucho,173,PE,Peru,-13.573,-74.389,Provincia de Cangallo,city,,,30443.0,America/Lima,Q1814190
+80829,Provincia de Huamanga,3692,AYA,Ayacucho,173,PE,Peru,-13.2,-74.25,Provincia de Huamanga,adm3,,,282194.0,America/Lima,Q1784857
+80830,Provincia de Huanca Sancos,3692,AYA,Ayacucho,173,PE,Peru,-14.076,-74.428,Provincia de Huanca Sancos,city,,,8409.0,America/Lima,Q1808513
+80835,Provincia de Huanta,3692,AYA,Ayacucho,173,PE,Peru,-12.5,-74.16667,Provincia de Huanta,adm3,,,89466.0,America/Lima,Q930214
+80850,Provincia de La Mar,3692,AYA,Ayacucho,173,PE,Peru,-12.91667,-73.83333,Provincia de La Mar,city,,,70653.0,America/Lima,Q514494
+80856,Provincia de Lucanas,3692,AYA,Ayacucho,173,PE,Peru,-14.5,-74.33333,Provincia de Lucanas,city,,,51328.0,America/Lima,Q1814203
+80873,Provincia de Parinacochas,3692,AYA,Ayacucho,173,PE,Peru,-15.02965,-73.63487,Provincia de Parinacochas,city,,,27659.0,America/Lima,Q549969
+80895,Provincia de Sucre,3692,AYA,Ayacucho,173,PE,Peru,-14.103,-73.786,Provincia de Sucre,adm3,,,9445.0,America/Lima,Q1814180
+80908,Provincia de Víctor Fajardo,3692,AYA,Ayacucho,173,PE,Peru,-13.75,-74.33333,Provincia de Víctor Fajardo,adm3,,,20109.0,America/Lima,Q1947116
+80907,Provincia de Vilcas Huamán,3692,AYA,Ayacucho,173,PE,Peru,-13.632,-73.888,Provincia de Vilcas Huamán,city,,,16861.0,America/Lima,Q537708
+80924,Puquio,3692,AYA,Ayacucho,173,PE,Peru,-14.7,-74.13333,Puquio,adm3,,,10491.0,America/Lima,Q2726653
+80951,San Miguel,3692,AYA,Ayacucho,173,PE,Peru,-13.0125,-73.98083,San Miguel,adm2,,,8400.0,America/Lima,Q2726675
+80985,Tambo,3692,AYA,Ayacucho,173,PE,Peru,-14.79847,-73.92438,Tambo,city,,,5032.0,America/Lima,Q723584
+80573,Bambamarca,3688,CAJ,Cajamarca,173,PE,Peru,-6.68333,-78.53333,Bambamarca,adm3,,,13351.0,America/Lima,Q3348274
+80580,Cajabamba,3688,CAJ,Cajamarca,173,PE,Peru,-7.61667,-78.05,Cajabamba,adm3,,,13486.0,America/Lima,Q3344351
+80581,Cajamarca,3688,CAJ,Cajamarca,173,PE,Peru,-7.16378,-78.50027,Cajamarca,adm1,,,201329.0,America/Lima,Q205119
+80600,Celendín,3688,CAJ,Cajamarca,173,PE,Peru,-6.8659,-78.14585,Celendín,adm2,,,14660.0,America/Lima,Q3344002
+80623,Chota,3688,CAJ,Cajamarca,173,PE,Peru,-6.55,-78.65,Chota,adm3,,,14240.0,America/Lima,Q2964558
+80678,Jaén,3688,CAJ,Cajamarca,173,PE,Peru,-5.70729,-78.80785,Jaén,city,,,52493.0,America/Lima,Q1229885
+80785,Provincia de Cajabamba,3688,CAJ,Cajamarca,173,PE,Peru,-7.5,-78.16667,Provincia de Cajabamba,adm3,,,75687.0,America/Lima,Q751373
+80786,Provincia de Cajamarca,3688,CAJ,Cajamarca,173,PE,Peru,-7.33333,-78.41667,Provincia de Cajamarca,adm3,,,348433.0,America/Lima,Q1431135
+80802,Provincia de Celendín,3688,CAJ,Cajamarca,173,PE,Peru,-6.83333,-78.25,Provincia de Celendín,city,,,79084.0,America/Lima,Q1431153
+80806,Provincia de Chota,3688,CAJ,Cajamarca,173,PE,Peru,-6.38332,-79.18055,Provincia de Chota,city,,,142984.0,America/Lima,Q1431140
+80814,Provincia de Contumazá,3688,CAJ,Cajamarca,173,PE,Peru,-7.33333,-78.91667,Provincia de Contumazá,adm3,,,27693.0,America/Lima,Q1948003
+80819,Provincia de Cutervo,3688,CAJ,Cajamarca,173,PE,Peru,-6.36667,-78.85,Provincia de Cutervo,adm3,,,0.0,America/Lima,Q1947910
+80826,Provincia de Hualgayoc,3688,CAJ,Cajamarca,173,PE,Peru,-6.68,-78.53,Provincia de Hualgayoc,adm3,,,13351.0,America/Lima,Q1947926
+80847,Provincia de Jaén,3688,CAJ,Cajamarca,173,PE,Peru,-5.71074,-79.00438,Provincia de Jaén,adm3,,,185432.0,America/Lima,Q683949
+80886,Provincia de San Ignacio,3688,CAJ,Cajamarca,173,PE,Peru,-5.08333,-79.0,Provincia de San Ignacio,adm3,,,7912.0,America/Lima,Q1814197
+80888,Provincia de San Miguel,3688,CAJ,Cajamarca,173,PE,Peru,-7.0,-79.0,Provincia de San Miguel,city,,,46043.0,America/Lima,Q1947960
+80891,Provincia de Santa Cruz,3688,CAJ,Cajamarca,173,PE,Peru,-6.83333,-79.0,Provincia de Santa Cruz,adm3,,,37164.0,America/Lima,Q2084630
+80944,San Ignacio,3688,CAJ,Cajamarca,173,PE,Peru,-5.14583,-79.00139,San Ignacio,adm3,,,7912.0,America/Lima,Q11011907
+80587,Callao,3701,CAL,Callao,173,PE,Peru,-12.05659,-77.11814,Callao,adm1,,,537377.0,America/Lima,Q105037
+80560,Anta,3691,CUS,Cusco,173,PE,Peru,-13.47056,-72.14833,Anta,adm3,,,5859.0,America/Lima,Q3348268
+80579,Cahuanuyo,3691,CUS,Cusco,173,PE,Peru,-14.34147,-71.46311,Cahuanuyo,city,,,3935.0,America/Lima,Q3344055
+80584,Calca,3691,CUS,Cusco,173,PE,Peru,-13.33333,-71.95,Calcuta,adm3,,,9179.0,America/Lima,Q3344215
+80586,Callanca,3691,CUS,Cusco,173,PE,Peru,-14.18137,-71.1407,Callanca,city,,,4046.0,America/Lima,Q3344215
+80597,Ccaquiracunca,3691,CUS,Cusco,173,PE,Peru,-14.27683,-71.45026,Ccaquiracca,city,,,4098.0,America/Lima,Q3312424
+80599,Ccuntuma,3691,CUS,Cusco,173,PE,Peru,-14.1254,-71.41216,Ccuntuma,city,,,3511.0,America/Lima,Q3312424
+80607,Checacupe,3691,CUS,Cusco,173,PE,Peru,-14.02694,-71.45278,Chccupe,adm3,,,3440.0,America/Lima,Q765311
+80608,Checca,3691,CUS,Cusco,173,PE,Peru,-14.47278,-71.39389,Checca,adm3,,,3810.0,America/Lima,Q765311
+80613,Chignayhua,3691,CUS,Cusco,173,PE,Peru,-14.2461,-71.44442,Chignayhua,city,,,3912.0,America/Lima,Q260911
+80617,Chinchero,3691,CUS,Cusco,173,PE,Peru,-13.39222,-72.04778,Chinchero,adm3,,,0.0,America/Lima,Q26764442
+80629,Combapata,3691,CUS,Cusco,173,PE,Peru,-14.10111,-71.42944,Combapata,adm3,,,3472.0,America/Lima,Q3344173
+80631,Conchopata,3691,CUS,Cusco,173,PE,Peru,-14.46968,-71.19843,Conchopata,city,,,3977.0,America/Lima,Q43418
+80635,Cullcuyre,3691,CUS,Cusco,173,PE,Peru,-14.09272,-71.33119,Cullcuyre,city,,,3593.0,America/Lima,Q2638258
+80636,Cusco,3691,CUS,Cusco,173,PE,Peru,-13.52264,-71.96734,Cúsa,adm1,,,428450.0,America/Lima,Q5582862
+80661,Huayna Alcalde,3691,CUS,Cusco,173,PE,Peru,-14.26989,-71.09599,Huayna Alcalde,city,,,4298.0,America/Lima,Q16576408
+80676,Jayobamba,3691,CUS,Cusco,173,PE,Peru,-14.09425,-71.33922,Jayobamba,city,,,3593.0,America/Lima,Q917434
+80696,Langui,3691,CUS,Cusco,173,PE,Peru,-14.43194,-71.27306,A la ventana,adm3,,,3969.0,America/Lima,Q2638295
+80700,Layo,3691,CUS,Cusco,173,PE,Peru,-14.49361,-71.155,Lejos,adm3,,,3978.0,America/Lima,Q11172311
+80702,Lima Pampa,3691,CUS,Cusco,173,PE,Peru,-14.08976,-71.33664,Lima Pampa,city,,,3569.0,America/Lima,Q2868
+80709,Maranganí,3691,CUS,Cusco,173,PE,Peru,-14.35672,-71.16924,Creciente,adm3,,,3709.0,America/Lima,Q13190024
+80710,Maras,3691,CUS,Cusco,173,PE,Peru,-13.335,-72.15667,Bajo,adm3,,,0.0,America/Lima,Q1026235
+80723,Mosoc Cancha,3691,CUS,Cusco,173,PE,Peru,-14.28514,-71.08773,Mosoc Cancha,city,,,4450.0,America/Lima,Q6024431
+80724,Mosoc Llacta,3691,CUS,Cusco,173,PE,Peru,-14.12,-71.47278,Mosoc llacta,adm3,,,3802.0,America/Lima,Q6024431
+80731,Ollantaytambo,3691,CUS,Cusco,173,PE,Peru,-13.25722,-72.26306,Ollantaytambo,adm3,,,2000.0,America/Lima,Q916382
+80735,Oropesa,3691,CUS,Cusco,173,PE,Peru,-13.59278,-71.77194,Oropesa,adm3,,,9444.0,America/Lima,Q916382
+80748,Pampamarca,3691,CUS,Cusco,173,PE,Peru,-14.14639,-71.45944,Pampamarca,adm3,,,3811.0,America/Lima,Q2640020
+80750,Pangoa,3691,CUS,Cusco,173,PE,Peru,-12.11667,-73.0,Nombre,city,,,6638.0,America/Lima,Q2725364
+80763,Pisac,3691,CUS,Cusco,173,PE,Peru,-13.4225,-71.84667,Escritor,adm3,,,2000.0,America/Lima,Q3344087
+80769,Provincia de Acomayo,3691,CUS,Cusco,173,PE,Peru,-13.91667,-71.66667,Provincia de Acomayo,adm3,,,22940.0,America/Lima,Q1920602
+80774,Provincia de Anta,3691,CUS,Cusco,173,PE,Peru,-13.5,-72.33333,Provincia de Anta,city,,,56206.0,America/Lima,Q1920482
+80788,Provincia de Calca,3691,CUS,Cusco,173,PE,Peru,-13.0,-72.16667,Provincia de Calca,adm3,,,63155.0,America/Lima,Q1948019
+80790,Provincia de Canas,3691,CUS,Cusco,173,PE,Peru,-14.41083,-71.33694,Provincia de Canas,adm3,,,32484.0,America/Lima,Q1920500
+80791,Provincia de Canchis,3691,CUS,Cusco,173,PE,Peru,-14.08194,-71.18556,Provincia de Canchis,adm3,,,95774.0,America/Lima,Q951287
+80808,Provincia de Chumbivilcas,3691,CUS,Cusco,173,PE,Peru,-14.41667,-72.0,Provincia de Chumbivilcas,city,,,66410.0,America/Lima,Q584864
+80818,Provincia de Cusco,3691,CUS,Cusco,173,PE,Peru,-13.5,-72.0,Provincia de Cusco,city,,,447588.0,America/Lima,Q1132101
+80822,Provincia de Espinar,3691,CUS,Cusco,173,PE,Peru,-14.75,-71.41667,Provincia de Espinar,city,,,57582.0,America/Lima,Q1947973
+80849,Provincia de La Convención,3691,CUS,Cusco,173,PE,Peru,-12.0,-73.0,Provincia de La Convención,city,,,147148.0,America/Lima,Q1343276
+80874,Provincia de Paruro,3691,CUS,Cusco,173,PE,Peru,-13.91667,-71.91667,Provincia de Paruro,adm3,,,25567.0,America/Lima,Q1920613
+80877,Provincia de Paucartambo,3691,CUS,Cusco,173,PE,Peru,-13.16667,-71.41667,Provincia de Paucartambo,adm3,,,42504.0,America/Lima,Q746434
+80882,Provincia de Quispicanchis,3691,CUS,Cusco,173,PE,Peru,-13.41667,-71.0,Provincia de Quispanchis,city,,,,America/Lima,Q1920520
+80906,Provincia de Urubamba,3691,CUS,Cusco,173,PE,Peru,-13.25,-72.33333,Provincia de Urubamba,city,,,60739.0,America/Lima,Q1771879
+80926,Qquea,3691,CUS,Cusco,173,PE,Peru,-14.05417,-71.38583,QQUEA,city,,,3482.0,America/Lima,Q672921
+80928,Queromarca,3691,CUS,Cusco,173,PE,Peru,-14.18391,-71.38343,Queromarca,city,,,3496.0,America/Lima,Q672921
+80960,Santa Ana,3691,CUS,Cusco,173,PE,Peru,-12.86667,-72.71667,Santa Ana,city,,,25145.0,America/Lima,Q1944245
+80968,Santo Tomas,3691,CUS,Cusco,173,PE,Peru,-14.44556,-72.08417,Santo Tomas,adm3,,,4134.0,America/Lima,Q3344084
+80975,Sicuani,3691,CUS,Cusco,173,PE,Peru,-14.26944,-71.22611,Sicuaní,adm3,,,33575.0,America/Lima,Q4419079
+80993,Tinta,3691,CUS,Cusco,173,PE,Peru,-14.145,-71.40694,Tinta,adm3,,,3466.0,America/Lima,Q1974467
+81000,Tungasuca,3691,CUS,Cusco,173,PE,Peru,-14.16389,-71.47667,Tunga,adm3,,,3791.0,America/Lima,Q49278346
+81004,Urcos,3691,CUS,Cusco,173,PE,Peru,-13.68611,-71.62278,Urcos,adm3,,,5479.0,America/Lima,Q2989619
+81005,Urubamba,3691,CUS,Cusco,173,PE,Peru,-13.30472,-72.11583,Urubamba,adm3,,,7540.0,America/Lima,Q2304483
+81015,Yanaoca,3691,CUS,Cusco,173,PE,Peru,-14.21806,-71.43167,Yanaoca,adm3,,,3913.0,America/Lima,Q2989624
+80651,Huancavelica,3679,HUV,Huancavelica,173,PE,Peru,-12.78261,-74.97266,Huancavelica,adm1,,,49570.0,America/Lima,Q1000333
+80662,Huaytara,3679,HUV,Huancavelica,173,PE,Peru,-13.65616,-75.09234,Huaytara,adm3,,,818.0,America/Lima,Q629736
+80749,Pampas,3679,HUV,Huancavelica,173,PE,Peru,-12.3949,-74.86687,Pampa,adm2,,,5521.0,America/Lima,Q2725364
+80768,Provincia de Acobamba,3679,HUV,Huancavelica,173,PE,Peru,-12.75,-74.66667,Provincia de Acobamba,city,,,38208.0,America/Lima,Q1948039
+80773,Provincia de Angaraes,3679,HUV,Huancavelica,173,PE,Peru,-13.0,-74.75,Provincia de Angaraes,city,,,49207.0,America/Lima,Q2084862
+80799,Provincia de Castrovirreyna,3679,HUV,Huancavelica,173,PE,Peru,-13.14535,-75.40598,Provincia de Castrovirreyna,adm3,,,13982.0,America/Lima,Q1944312
+80810,Provincia de Churcampa,3679,HUV,Huancavelica,173,PE,Peru,-12.6,-74.52,Provincia de Churcampa,adm3,,,0.0,America/Lima,Q639598
+80833,Provincia de Huancavelica,3679,HUV,Huancavelica,173,PE,Peru,-12.66667,-75.25,Provincia de Huancavelica,adm3,,,115054.0,America/Lima,Q2088859
+80903,Provincia de Tayacaja,3679,HUV,Huancavelica,173,PE,Peru,-12.25,-74.75,Provincia de Tayacaja,adm3,,,81403.0,America/Lima,Q1948195
+80558,Ambo,3687,HUC,Huanuco,173,PE,Peru,-10.13083,-76.20472,Ambos,adm3,,,6865.0,America/Lima,Q3317423
+80646,Huacaybamba,3687,HUC,Huanuco,173,PE,Peru,-8.9948,-76.81027,Huacaybamba,adm3,,,0.0,America/Lima,Q2084668
+80665,Huánuco,3687,HUC,Huanuco,173,PE,Peru,-9.93062,-76.24223,Huánuco,adm1,,,196627.0,America/Lima,Q504394
+80699,Lauricocha,3687,HUC,Huanuco,173,PE,Peru,-10.20055,-76.70359,Lauricocha,city,,,93.0,America/Lima,Q188098
+80703,Llata,3687,HUC,Huanuco,173,PE,Peru,-9.41667,-76.78333,Estaño,city,,,4585.0,America/Lima,Q3344864
+80771,Provincia de Ambo,3687,HUC,Huanuco,173,PE,Peru,-10.16667,-76.16667,Provincia de Ambo,city,,,50880.0,America/Lima,Q980098
+80821,Provincia de Dos de Mayo,3687,HUC,Huanuco,173,PE,Peru,-9.91667,-76.75,Provincia de Dos de Mayo,adm3,,,33258.0,America/Lima,Q2088810
+80828,Provincia de Huamalíes,3687,HUC,Huanuco,173,PE,Peru,-9.25,-76.5,Provincia de Huamalíes,city,,,52039.0,America/Lima,Q1819840
+80842,Provincia de Huánuco,3687,HUC,Huanuco,173,PE,Peru,-9.66667,-76.08333,Provincia de Huánuco,city,,,293397.0,America/Lima,Q2100624
+80855,Provincia de Leoncio Prado,3687,HUC,Huanuco,173,PE,Peru,-9.16667,-76.0,Provincia de Leoncio Prado,adm3,,,0.0,America/Lima,Q1468138
+80859,Provincia de Marañón,3687,HUC,Huanuco,173,PE,Peru,-8.75,-76.66667,Provincia de Marañón,adm3,,,26622.0,America/Lima,Q764487
+80869,Provincia de Pachitea,3687,HUC,Huanuco,173,PE,Peru,-9.95262,-75.8139,Provincia de Pachítea,adm3,,,49159.0,America/Lima,Q2084641
+80917,Puerto Inca,3687,HUC,Huanuco,173,PE,Peru,-9.36696,-75.08958,Puerto Inca,city,,,0.0,America/Lima,Q1944276
+80952,San Miguel de Cauri,3687,HUC,Huanuco,173,PE,Peru,-10.13818,-76.62288,San Miguel de Cauri,city,,,5326.0,America/Lima,Q2726675
+80992,Tingo María,3687,HUC,Huanuco,173,PE,Peru,-9.29532,-75.99574,Tingo María,city,,,46191.0,America/Lima,Q1974467
+81014,Yanacancha,3687,HUC,Huanuco,173,PE,Peru,-10.24111,-76.64556,Yanacancha,city,,,23175.0,America/Lima,Q3344843
+81016,Yarowilca,3687,HUC,Huanuco,173,PE,Peru,-9.80263,-76.59516,Yarowilca,city,,,19897.0,America/Lima,Q2088849
+80616,Chincha Alta,3700,ICA,Ica,173,PE,Peru,-13.40985,-76.13235,Chincha Alta,adm3,,,153076.0,America/Lima,Q990685
+80667,Ica,3700,ICA,Ica,173,PE,Peru,-14.06777,-75.72861,ICA,adm1,,,282407.0,America/Lima,Q840712
+80706,Los Aquijes,3700,ICA,Ica,173,PE,Peru,-14.09667,-75.69083,Los Aquijes,adm3,,,7848.0,America/Lima,Q3344864
+80714,Minas de Marcona,3700,ICA,Ica,173,PE,Peru,-15.21194,-75.11028,Minas de Marcona,city,,,15478.0,America/Lima,Q580017
+80729,Nazca,3700,ICA,Ica,173,PE,Peru,-14.83098,-74.93895,Nazca,adm3,,,22859.0,America/Lima,Q1711521
+80747,Palpa,3700,ICA,Ica,173,PE,Peru,-14.53361,-75.18556,Palpa,adm3,,,5883.0,America/Lima,Q2640020
+80752,Paracas,3700,ICA,Ica,173,PE,Peru,-13.86667,-76.26667,Paracas,adm3,,,1196.0,America/Lima,Q2725364
+80764,Pisco,3700,ICA,Ica,173,PE,Peru,-13.71029,-76.20538,Pisco,adm3,,,61869.0,America/Lima,Q290504
+80805,Provincia de Chincha,3700,ICA,Ica,173,PE,Peru,-13.31791,-75.9393,Provincia de Chincha,city,,,226113.0,America/Lima,Q1325771
+80843,Provincia de Ica,3700,ICA,Ica,173,PE,Peru,-14.33861,-75.64833,Provincia de Ica,adm3,,,391519.0,America/Lima,Q2084696
+80865,Provincia de Nazca,3700,ICA,Ica,173,PE,Peru,-15.0,-75.08333,Provincia de Nazca,adm3,,,,America/Lima,Q938322
+80872,Provincia de Palpa,3700,ICA,Ica,173,PE,Peru,-14.41667,-75.16667,Provincia de Palpa,city,,,13232.0,America/Lima,Q783136
+80878,Provincia de Pisco,3700,ICA,Ica,173,PE,Peru,-13.80377,-75.94264,Provincia de Pisco,city,,,150744.0,America/Lima,Q1366050
+80935,Río Grande,3700,ICA,Ica,173,PE,Peru,-14.516,-75.19933,Río Grande,city,,,4689.0,America/Lima,Q3344069
+80943,San Clemente,3700,ICA,Ica,173,PE,Peru,-13.66667,-76.15,San Clemente,adm3,,,15815.0,America/Lima,Q1935565
+80949,San Juan Bautista,3700,ICA,Ica,173,PE,Peru,-14.01083,-75.73583,San Juan Bautista,adm3,,,6871.0,America/Lima,Q11011907
+80964,Santiago,3700,ICA,Ica,173,PE,Peru,-14.18469,-75.71124,Santiago,city,,,10449.0,America/Lima,Q1944245
+80978,Subtanjalla,3700,ICA,Ica,173,PE,Peru,-14.01889,-75.75806,Subtanjalla,adm3,,,9096.0,America/Lima,Q11034041
+81009,Villa Tupac Amaru,3700,ICA,Ica,173,PE,Peru,-13.71135,-76.1498,Villa Tupac Amaru,city,,,11159.0,America/Lima,Q941183
+80556,Acolla,3693,JUN,Junín,173,PE,Peru,-11.73193,-75.54634,Acolla,adm3,,,6077.0,America/Lima,Q25247498
+80591,Carhuamayo,3693,JUN,Junín,173,PE,Peru,-10.91667,-76.03333,Carhuamayo,adm3,,,9122.0,America/Lima,Q3344236
+80604,Chanchamayo,3693,JUN,Junín,173,PE,Peru,-11.05,-75.31667,Chanchamayo,adm3,,,151489.0,America/Lima,Q765311
+80625,Chupaca,3693,JUN,Junín,173,PE,Peru,-12.06667,-75.28333,Chupaca,adm3,,,9877.0,America/Lima,Q3344173
+80630,Concepción,3693,JUN,Junín,173,PE,Peru,-11.91762,-75.31401,Concepción,city,,,11330.0,America/Lima,Q43418
+80652,Huancayo,3693,JUN,Junín,173,PE,Peru,-12.06513,-75.20486,Huancayo,adm1,,,450900.0,America/Lima,Q468782
+80659,Huasahuasi,3693,JUN,Junín,173,PE,Peru,-11.26527,-75.64722,Huasahuasi,city,,,5146.0,America/Lima,Q430862
+80663,Huayucachi,3693,JUN,Junín,173,PE,Peru,-12.13333,-75.23333,Huayucachi,adm3,,,9800.0,America/Lima,Q629736
+80674,Jauja,3693,JUN,Junín,173,PE,Peru,-11.77584,-75.49656,Jauja,adm3,,,21057.0,America/Lima,Q917434
+80685,Junín,3693,JUN,Junín,173,PE,Peru,-11.15895,-75.99304,Junín,city,,,15320.0,America/Lima,Q2640092
+80688,La Oroya,3693,JUN,Junín,173,PE,Peru,-11.51893,-75.89935,La Oroya,adm3,,,33345.0,America/Lima,Q1759360
+80713,Mazamari,3693,JUN,Junín,173,PE,Peru,-11.32583,-74.53083,Mazamari,adm3,,,6826.0,America/Lima,Q580017
+80720,Morococha,3693,JUN,Junín,173,PE,Peru,-11.59972,-76.14111,Moróco,adm3,,,7890.0,America/Lima,Q766735
+80734,Orcotuna,3693,JUN,Junín,173,PE,Peru,-11.96886,-75.3078,Orcotuna,adm3,,,4199.0,America/Lima,Q916382
+80758,Perené,3693,JUN,Junín,173,PE,Peru,-10.9451,-75.22394,Paz,adm3,,,6844.0,America/Lima,Q2070443
+80761,Pilcomay,3693,JUN,Junín,173,PE,Peru,-12.04722,-75.24931,Pilomeo,city,,,8169.0,America/Lima,Q3344087
+80809,Provincia de Chupaca,3693,JUN,Junín,173,PE,Peru,-12.3,-75.433,Provincia de Chupaca,adm3,,,52988.0,America/Lima,Q1777631
+80811,Provincia de Concepción,3693,JUN,Junín,173,PE,Peru,-11.75,-75.0,Provincia de Concepción,city,,,55591.0,America/Lima,Q1991124
+80834,Provincia de Huancayo,3693,JUN,Junín,173,PE,Peru,-12.17319,-75.16169,Provincia de Huancayo,adm3,,,545615.0,America/Lima,Q1777621
+80846,Provincia de Jauja,3693,JUN,Junín,173,PE,Peru,-11.726,-75.547,Provincia de Jauja,adm3,,,6805.0,America/Lima,Q922867
+80848,Provincia de Junín,3693,JUN,Junín,173,PE,Peru,-11.08333,-76.0,Provincia de Junín,city,,,15320.0,America/Lima,Q644721
+80893,Provincia de Satipo,3693,JUN,Junín,173,PE,Peru,-11.5,-74.25,Provincia de Satipo,city,,,203985.0,America/Lima,Q1335384
+80902,Provincia de Tarma,3693,JUN,Junín,173,PE,Peru,-11.40562,-75.69129,Provincia de Tarma,adm3,,,51350.0,America/Lima,Q946269
+80909,Provincia de Yauli,3693,JUN,Junín,173,PE,Peru,-11.66667,-76.16667,Provincia de Yauli,city,,,40390.0,America/Lima,Q1342828
+80940,San Agustin,3693,JUN,Junín,173,PE,Peru,-11.97195,-75.25562,San Agustin,adm3,,,15281.0,America/Lima,Q3348291
+80946,San Jerónimo,3693,JUN,Junín,173,PE,Peru,-11.95591,-75.28411,San Jerónimo,city,,,8772.0,America/Lima,Q11011907
+80954,San Pedro de Cajas,3693,JUN,Junín,173,PE,Peru,-11.25061,-75.86116,San Pedro de Cajas,adm3,,,5758.0,America/Lima,Q25400021
+80956,San Ramón,3693,JUN,Junín,173,PE,Peru,-11.12417,-75.35733,San Ramón,city,,,14708.0,America/Lima,Q2219996
+80970,Satipo,3693,JUN,Junín,173,PE,Peru,-11.25222,-74.63861,Satipo,adm3,,,15532.0,America/Lima,Q3057885
+80974,Sicaya,3693,JUN,Junín,173,PE,Peru,-12.03333,-75.28333,Sicaya,adm3,,,6842.0,America/Lima,Q7507402
+80991,Tarma,3693,JUN,Junín,173,PE,Peru,-11.41899,-75.68992,Tarma,adm3,,,54078.0,America/Lima,Q1759366
+80562,Ascope,3683,LAL,La Libertad,173,PE,Peru,-7.71444,-79.10778,Ascopio,adm3,,,14015.0,America/Lima,Q3344017
+80595,Cascas,3683,LAL,La Libertad,173,PE,Peru,-7.48333,-78.81667,Ladrar,adm3,,,4299.0,America/Lima,Q3344040
+80609,Chepen,3683,LAL,La Libertad,173,PE,Peru,-7.14367,-79.45674,Chepen,adm3,,,41992.0,America/Lima,Q1920599
+80611,Chicama,3683,LAL,La Libertad,173,PE,Peru,-7.84472,-79.14694,Chicama,adm3,,,14915.0,America/Lima,Q7258550
+80620,Chocope,3683,LAL,La Libertad,173,PE,Peru,-7.79139,-79.22167,Chocope,adm3,,,32370.0,America/Lima,Q5103685
+80643,Gran Chimu,3683,LAL,La Libertad,173,PE,Peru,-7.57976,-78.64718,Gran Chimu,adm3,,,26892.0,America/Lima,Q1920564
+80644,Guadalupe,3683,LAL,La Libertad,173,PE,Peru,-7.25,-79.48333,Guadalupo,adm3,,,25376.0,America/Lima,Q2117510
+80649,Huamachuco,3683,LAL,La Libertad,173,PE,Peru,-7.8,-78.06667,Huamachuco,adm3,,,21768.0,America/Lima,Q1632770
+80682,Julcan,3683,LAL,La Libertad,173,PE,Peru,-8.17238,-78.46356,Julcán,adm3,,,0.0,America/Lima,Q1920491
+80697,Laredo,3683,LAL,La Libertad,173,PE,Peru,-8.08965,-78.9602,Lacedo,adm3,,,24691.0,America/Lima,Q6488869
+80715,Moche,3683,LAL,La Libertad,173,PE,Peru,-8.17111,-79.00917,Moche,adm3,,,22581.0,America/Lima,Q6887544
+80736,Otuzco,3683,LAL,La Libertad,173,PE,Peru,-7.9,-78.58333,Otuzco,adm3,,,10134.0,America/Lima,Q3056421
+80741,Pacanga,3683,LAL,La Libertad,173,PE,Peru,-7.16667,-79.5,Pacanga,adm3,,,8750.0,America/Lima,Q7121871
+80742,Pacasmayo,3683,LAL,La Libertad,173,PE,Peru,-7.40056,-79.57139,Pacasmayo,adm3,,,29165.0,America/Lima,Q1279608
+80745,Paiján,3683,LAL,La Libertad,173,PE,Peru,-7.73291,-79.3015,Pagar,city,,,21128.0,America/Lima,Q7124745
+80783,Provincia de Bolívar,3683,LAL,La Libertad,173,PE,Peru,-7.33333,-77.75,Provincia de Bolívar,city,,,14457.0,America/Lima,Q951816
+80866,Provincia de Otuzco,3683,LAL,La Libertad,173,PE,Peru,-7.90457,-78.56362,Provincia de Otuzco,adm3,,,77862.0,America/Lima,Q583300
+80868,Provincia de Pacasmayo,3683,LAL,La Libertad,173,PE,Peru,-7.25,-79.5,Provincia de Pacasmayo,city,,,102897.0,America/Lima,Q1944266
+80876,Provincia de Pataz,3683,LAL,La Libertad,173,PE,Peru,-8.25,-77.33333,Provincia de Pataz,adm3,,,76103.0,America/Lima,Q1948180
+80892,Provincia de Santiago de Chuco,3683,LAL,La Libertad,173,PE,Peru,-8.33333,-78.25,Provincia de Santiago de Chuco,city,,,50896.0,America/Lima,Q1944238
+80904,Provincia de Trujillo,3683,LAL,La Libertad,173,PE,Peru,-8.08333,-78.91667,Provincia de Trujillo,adm3,,,970016.0,America/Lima,Q2013427
+80931,Quiruvilca,3683,LAL,La Libertad,173,PE,Peru,-7.96667,-78.2,Gorjeo,city,,,9226.0,America/Lima,Q27194717
+80936,Salaverry,3683,LAL,La Libertad,173,PE,Peru,-8.221,-78.97698,Salaverry,adm3,,,10066.0,America/Lima,Q7403730
+80955,San Pedro de Lloc,3683,LAL,La Libertad,173,PE,Peru,-7.4289,-79.50416,San Pedro del lugar,city,,,16198.0,America/Lima,Q1014474
+80959,Sanchez Carrion,3683,LAL,La Libertad,173,PE,Peru,-7.78538,-77.92586,Carrión de Sánchez,adm3,,,144405.0,America/Lima,Q1944245
+80965,Santiago de Cao,3683,LAL,La Libertad,173,PE,Peru,-7.95889,-79.23917,Santiago de Cao,city,,,21982.0,America/Lima,Q15275280
+80966,Santiago de Chuco,3683,LAL,La Libertad,173,PE,Peru,-8.14099,-78.17329,Santiago de Chuco,city,,,6759.0,America/Lima,Q3344084
+80998,Trujillo,3683,LAL,La Libertad,173,PE,Peru,-8.11599,-79.02998,Trujillo,adm1,,,1148668.0,America/Lima,Q214173
+81010,Viru,3683,LAL,La Libertad,173,PE,Peru,-8.52199,-78.60355,Viru,adm3,,,36029.0,America/Lima,Q1948051
+80612,Chiclayo,3702,LAM,Lambayeque,173,PE,Peru,-6.77137,-79.84088,Chiclayo,adm1,,,552508.0,America/Lima,Q260911
+80621,Chongoyape,3702,LAM,Lambayeque,173,PE,Peru,-6.64056,-79.38917,Analista,adm3,,,16061.0,America/Lima,Q5767159
+80641,Eten,3702,LAM,Lambayeque,173,PE,Peru,-6.90806,-79.86417,Comer,adm3,,,11993.0,America/Lima,Q2084675
+80642,Ferreñafe,3702,LAM,Lambayeque,173,PE,Peru,-6.63889,-79.78889,Ferreña,adm3,,,31777.0,America/Lima,Q2143690
+80675,Jayanca,3702,LAM,Lambayeque,173,PE,Peru,-6.39083,-79.82194,Jayanca,adm3,,,6126.0,America/Lima,Q917434
+80694,Lambayeque,3702,LAM,Lambayeque,173,PE,Peru,-6.70111,-79.90611,Lambayeque,adm3,,,43710.0,America/Lima,Q768086
+80716,Mochumí,3702,LAM,Lambayeque,173,PE,Peru,-6.54364,-79.86217,Mochumi,city,,,7460.0,America/Lima,Q27194530
+80718,Monsefú,3702,LAM,Lambayeque,173,PE,Peru,-6.87431,-79.86871,Melsefú,city,,,25707.0,America/Lima,Q10976116
+80728,Mórrope,3702,LAM,Lambayeque,173,PE,Peru,-6.53536,-80.01104,Excelente,city,,,6662.0,America/Lima,Q27194532
+80725,Motupe,3702,LAM,Lambayeque,173,PE,Peru,-6.15194,-79.71417,Mota,adm3,,,13681.0,America/Lima,Q6024431
+80732,Olmos,3702,LAM,Lambayeque,173,PE,Peru,-5.98472,-79.74528,Olmo,adm3,,,9800.0,America/Lima,Q916382
+80739,Oyotún,3702,LAM,Lambayeque,173,PE,Peru,-6.84438,-79.30093,Abierto,city,,,6330.0,America/Lima,Q27557971
+80760,Picsi,3702,LAM,Lambayeque,173,PE,Peru,-6.71778,-79.76972,Espinilla,adm3,,,43610.0,America/Lima,Q3344087
+80762,Pimentel,3702,LAM,Lambayeque,173,PE,Peru,-6.83667,-79.93417,Pimentel,adm3,,,15552.0,America/Lima,Q3344087
+80804,Provincia de Chiclayo,3702,LAM,Lambayeque,173,PE,Peru,-6.76667,-79.85,Provincia de Chiclayo,adm1,,,552508.0,America/Lima,Q546559
+80823,Provincia de Ferreñafe,3702,LAM,Lambayeque,173,PE,Peru,-6.33333,-79.5,Provincia de la provincia de Ferreñafe,adm3,,,97415.0,America/Lima,Q1948067
+80853,Provincia de Lambayeque,3702,LAM,Lambayeque,173,PE,Peru,-6.08333,-80.08333,Provincia de Lambayeque,city,,,300170.0,America/Lima,Q632826
+80915,Pueblo Nuevo,3702,LAM,Lambayeque,173,PE,Peru,-5.71667,-79.88333,Pueblo Nuevo,city,,,12471.0,America/Lima,Q217071
+80932,Reque,3702,LAM,Lambayeque,173,PE,Peru,-6.86556,-79.81778,Y,adm3,,,9808.0,America/Lima,Q27194717
+80948,San José,3702,LAM,Lambayeque,173,PE,Peru,-6.73813,-79.8275,San José,city,,,7434.0,America/Lima,Q11011907
+80972,Saña,3702,LAM,Lambayeque,173,PE,Peru,-6.91888,-79.582,Saña,city,,,39200.0,America/Lima,Q6171043
+80963,Santa Rosa,3702,LAM,Lambayeque,173,PE,Peru,-6.75772,-79.82747,Santa Rosa,city,,,10625.0,America/Lima,Q1944245
+81001,Túcume,3702,LAM,Lambayeque,173,PE,Peru,-6.50637,-79.85725,Tucume,city,,,7043.0,America/Lima,Q1677131
+80563,Asentamiento Humano Nicolas de Pierola,3695,LIM,Lima,173,PE,Peru,-11.93573,-76.70611,Asentamiento Humano Nicolas de Pierola,city,,,5800.0,America/Lima,Q3344017
+80574,Barranca,3695,LIM,Lima,173,PE,Peru,-10.75,-77.76667,Barranca,adm3,,,46290.0,America/Lima,Q2582671
+80585,Caleta de Carquín,3695,LIM,Lima,173,PE,Peru,-11.0925,-77.62667,Caleta de Carquín,city,,,5514.0,America/Lima,Q3344215
+80603,Chancay,3695,LIM,Lima,173,PE,Peru,-11.57139,-77.26722,Chancay,adm3,,,26958.0,America/Lima,Q757133
+80614,Chilca,3695,LIM,Lima,173,PE,Peru,-12.52111,-76.73722,Chilca,adm3,,,13920.0,America/Lima,Q260911
+80622,Chosica,3695,LIM,Lima,173,PE,Peru,-11.94306,-76.70944,Chosica,adm3,,,88606.0,America/Lima,Q5767299
+80647,Huacho,3695,LIM,Lima,173,PE,Peru,-11.10667,-77.605,Huacho,adm1,,,54545.0,America/Lima,Q1002052
+80648,Hualmay,3695,LIM,Lima,173,PE,Peru,-11.09639,-77.61389,Hualmay,adm3,,,28765.0,America/Lima,Q1002052
+80654,Huaral,3695,LIM,Lima,173,PE,Peru,-11.495,-77.20778,Huaral,adm3,,,62174.0,America/Lima,Q723677
+80660,Huaura,3695,LIM,Lima,173,PE,Peru,-11.07,-77.59944,Huaura,adm3,,,20723.0,America/Lima,Q16576408
+80671,Imperial,3695,LIM,Lima,173,PE,Peru,-13.05927,-76.35269,Imperial,adm3,,,38925.0,America/Lima,Q1000341
+80672,Independencia,3695,LIM,Lima,173,PE,Peru,-11.99,-77.04583,Independencia,locality,,,3987.0,America/Lima,Q1000341
+80701,Lima,3695,LIM,Lima,173,PE,Peru,-12.04318,-77.02824,Lima,capital,,,7737002.0,America/Lima,Q2868
+80708,Mala,3695,LIM,Lima,173,PE,Peru,-12.65806,-76.63083,Malla,adm3,,,17260.0,America/Lima,Q3348229
+80712,Matucana,3695,LIM,Lima,173,PE,Peru,-11.85,-76.4,Matucana,adm3,,,4517.0,America/Lima,Q580017
+80730,Nuevo Imperial,3695,LIM,Lima,173,PE,Peru,-13.07541,-76.31719,Nuevo Imperial,adm3,,,26233.0,America/Lima,Q1711521
+80738,Oyon,3695,LIM,Lima,173,PE,Peru,-10.75869,-76.87634,Oyon,city,,,522.0,America/Lima,Q1422624
+80753,Paramonga,3695,LIM,Lima,173,PE,Peru,-10.66667,-77.83333,Cacerola,adm3,,,27631.0,America/Lima,Q25768004
+80754,Pativilca,3695,LIM,Lima,173,PE,Peru,-10.7,-77.78333,Pativilca,adm3,,,13583.0,America/Lima,Q3368805
+80787,Provincia de Cajatambo,3695,LIM,Lima,173,PE,Peru,-10.66667,-77.0,Provincia de Cajatambo,adm3,,,6559.0,America/Lima,Q1422587
+80801,Provincia de Cañete,3695,LIM,Lima,173,PE,Peru,-12.75,-76.33333,Provincia de Cañete,city,,,240013.0,America/Lima,Q1431156
+80793,Provincia de Canta,3695,LIM,Lima,173,PE,Peru,-11.46667,-76.61667,Provincia de Canta,adm3,,,0.0,America/Lima,Q1422611
+80836,Provincia de Huaral,3695,LIM,Lima,173,PE,Peru,-11.25,-76.91667,Provincia de Huaral,adm3,,,183898.0,America/Lima,Q1422606
+80840,Provincia de Huarochirí,3695,LIM,Lima,173,PE,Peru,-11.91667,-76.41667,Provincia de Huarochirí,adm3,,,58145.0,America/Lima,Q1367991
+80910,Provincia de Yauyos,3695,LIM,Lima,173,PE,Peru,-12.41667,-76.0,Provincia de Yauyos,city,,,20463.0,America/Lima,Q1422601
+80920,Puerto Supe,3695,LIM,Lima,173,PE,Peru,-10.80135,-77.74333,Puerto Supe,city,,,11450.0,America/Lima,Q3504032
+80930,Quilmaná,3695,LIM,Lima,173,PE,Peru,-12.9486,-76.38112,Quilmaná,city,,,6442.0,America/Lima,Q27194717
+80933,Ricardo Palma,3695,LIM,Lima,173,PE,Peru,-11.91978,-76.6561,Ricardo Palma,city,,,4842.0,America/Lima,Q27194717
+80942,San Bartolo,3695,LIM,Lima,173,PE,Peru,-12.38333,-76.78333,San Bartolo,adm3,,,5733.0,America/Lima,Q1935565
+80950,San Luis,3695,LIM,Lima,173,PE,Peru,-12.07674,-76.99435,San Luis,section,,,8862.0,America/Lima,Q11011907
+80958,San Vicente de Cañete,3695,LIM,Lima,173,PE,Peru,-13.07556,-76.38528,San Vicente de Cañete,city,,,25829.0,America/Lima,Q1853969
+80962,Santa María,3695,LIM,Lima,173,PE,Peru,-12.00538,-76.89329,Santa María,city,,,14853.0,America/Lima,Q1944245
+80971,Sayán,3695,LIM,Lima,173,PE,Peru,-11.13333,-77.1946,Sayánán,city,,,6196.0,America/Lima,Q3057885
+80980,Supe,3695,LIM,Lima,173,PE,Peru,-10.7975,-77.71306,Abundante,city,,,13719.0,America/Lima,Q510413
+81003,Urb. Santo Domingo,3695,LIM,Lima,173,PE,Peru,-11.87655,-77.03345,Urb. Santo Domingo,section,,,5000.0,America/Lima,Q1677131
+81013,Végueta,3695,LIM,Lima,173,PE,Peru,-11.02253,-77.64378,Vegua,city,,,6219.0,America/Lima,Q3344843
+147944,Andoas,4922,LOR,Loreto,173,PE,Peru,-2.9025,-76.4025,Andoas,city,,,0.0,America/Lima,Q3649471
+147941,Borja,4922,LOR,Loreto,173,PE,Peru,-4.43333333,-77.55,Borja,city,,,522.0,America/Lima,Q4945551
+147949,Caballococha,4922,LOR,Loreto,173,PE,Peru,-3.90583333,-70.51638889,Caballococha,adm3,,,0.0,America/Lima,Q3317724
+147947,Cape Pantoja,4922,LOR,Loreto,173,PE,Peru,-0.96435,-75.18144,Cape Pantoja,adm3,,,564.0,America/Lima,Q19206831
+147952,Indiana,4922,LOR,Loreto,173,PE,Peru,-3.501427,-73.048096,Indiana,adm3,,,0.0,America/Lima,Q6022990
+147940,Iquitos,4922,LOR,Loreto,173,PE,Peru,-3.73333333,-73.25,Iquitos,adm1,,,377609.0,America/Lima,Q193289
+147945,Jeberos,4922,LOR,Loreto,173,PE,Peru,-5.28333,-76.28333,Jeberos,adm3,,,0.0,America/Lima,Q27094722
+147946,Jenaro Herrera,4922,LOR,Loreto,173,PE,Peru,-4.90741,-73.66779,Jenaro Herrera,adm3,,,0.0,America/Lima,Q15696655
+147948,Lagunas,4922,LOR,Loreto,173,PE,Peru,-5.22694,-75.67528,Lagunas,adm3,,,9197.0,America/Lima,Q27194615
+147942,Nauta,4922,LOR,Loreto,173,PE,Peru,-4.50833333,-73.58333333,Cejas,adm3,,,14646.0,America/Lima,Q3309417
+147953,Punchana,4922,LOR,Loreto,173,PE,Peru,-3.71666667,-73.23333333,Dayana,section,,,57824.0,America/Lima,Q7259962
+147954,Requena,4922,LOR,Loreto,173,PE,Peru,-6.74797,-75.05491,Requena,adm3,,,0.0,America/Lima,Q3344103
+147955,San Antonio del Estrecho,4922,LOR,Loreto,173,PE,Peru,-2.45012,-72.66896,San Antonio del Estrecho,adm2,,,8000.0,America/Lima,Q19799162
+147950,San Lorenzo,4922,LOR,Loreto,173,PE,Peru,-4.81667,-76.6,San Lorenzo,adm3,,,0.0,America/Lima,Q3317765
+80953,San Pablo,4922,LOR,Loreto,173,PE,Peru,-4.01922,-71.10281,San Pablo,city,,,0.0,America/Lima,Q28905458
+147951,Tamshiyacu,4922,LOR,Loreto,173,PE,Peru,-4.0032,-73.1585,Tamshiyacu,city,,,0.0,America/Lima,Q3514886
+147956,Yurimaguas,4922,LOR,Loreto,173,PE,Peru,-5.9,-76.08333333,Yurimaguas,adm3,,,62903.0,America/Lima,Q117625
+80666,Iberia,3678,MDD,Madre de Dios,173,PE,Peru,-11.35,-69.58333,Iberia,adm3,,,5791.0,America/Lima,Q504394
+80858,Provincia de Manú,3678,MDD,Madre de Dios,173,PE,Peru,-12.25,-71.0,Provincia de Manú,city,,,18549.0,America/Lima,Q2320717
+80898,Provincia de Tahuamanú,3678,MDD,Madre de Dios,173,PE,Peru,-11.25,-70.5,Provincia de Tahuamanú,city,,,11047.0,America/Lima,Q945636
+80900,Provincia de Tambopata,3678,MDD,Madre de Dios,173,PE,Peru,-12.19948,-70.05006,Provincia de Tambopata,city,,,111474.0,America/Lima,Q1999122
+80918,Puerto Maldonado,3678,MDD,Madre de Dios,173,PE,Peru,-12.59331,-69.18913,Puerto Maldonado,adm1,,,85024.0,America/Lima,Q541435
+80939,Salvación,3678,MDD,Madre de Dios,173,PE,Peru,-12.83605,-71.3649,Salvación,adm3,,,330.0,America/Lima,Q3348291
+80987,Tambopata,3678,MDD,Madre de Dios,173,PE,Peru,-12.67191,-69.35547,Tambopata,city,,,38966.0,America/Lima,Q723584
+80670,Ilo,3698,MOQ,Moquegua,173,PE,Peru,-17.63185,-71.34108,Oilo,adm3,,,66118.0,America/Lima,Q1000341
+80719,Moquegua,3698,MOQ,Moquegua,173,PE,Peru,-17.19832,-70.93567,Moquegua,adm1,,,69882.0,America/Lima,Q1000346
+80743,Pacocha,3698,MOQ,Moquegua,173,PE,Peru,-17.64604,-71.34481,Pacocha,city,,,7588.0,America/Lima,Q1279608
+80824,Provincia de General Sánchez Cerro,3698,MOQ,Moquegua,173,PE,Peru,-16.5,-70.66667,Provincia de General Sánchez Cerro,city,,,14865.0,America/Lima,Q1947893
+80844,Provincia de Ilo,3698,MOQ,Moquegua,173,PE,Peru,-17.49694,-71.16722,OIM Provincial,city,,,74649.0,America/Lima,Q1944257
+80862,Provincia de Mariscal Nieto,3698,MOQ,Moquegua,173,PE,Peru,-17.08361,-71.00333,Provincia de Mariscal Nieto,city,,,85349.0,America/Lima,Q1944431
+80996,Torata,3698,MOQ,Moquegua,173,PE,Peru,-17.07694,-70.84333,Torata,adm3,,,6198.0,America/Lima,Q3344048
+160102,Barranco,5687,LMA,Municipalidad Metropolitana de Lima,173,PE,Peru,-12.1454,-77.0207,Barranco,section,,,34378.0,America/Lima,Q893053
+160106,Jesús María,5687,LMA,Municipalidad Metropolitana de Lima,173,PE,Peru,-12.0729,-77.0416,Jesús María,city,,,75359.0,America/Lima,Q2711638
+160103,La Molina,5687,LMA,Municipalidad Metropolitana de Lima,173,PE,Peru,-12.0807,-76.9351,La Molina,adm3,,,0.0,America/Lima,Q1016388
+160108,Lince,5687,LMA,Municipalidad Metropolitana de Lima,173,PE,Peru,-12.0821,-77.0303,Lince,capital,,,7737002.0,America/Lima,Q2711642
+160107,Magdalena del Mar,5687,LMA,Municipalidad Metropolitana de Lima,173,PE,Peru,-12.0916,-77.0732,Magdalena del Mar,adm3,,,60290.0,America/Lima,Q986395
+160101,Miraflores,5687,LMA,Municipalidad Metropolitana de Lima,173,PE,Peru,-12.1194,-77.0282,Miraflores,section,,,187401.0,America/Lima,Q747840
+160105,Pueblo Libre,5687,LMA,Municipalidad Metropolitana de Lima,173,PE,Peru,-12.0757,-77.0634,Pueblo Libre,adm3,,,6371.0,America/Lima,Q2711629
+160104,San Borja,5687,LMA,Municipalidad Metropolitana de Lima,173,PE,Peru,-12.1015,-76.9967,San Borja,section,,,113247.0,America/Lima,Q2004830
+80945,San Isidro,5687,LMA,Municipalidad Metropolitana de Lima,173,PE,Peru,-12.0956,-77.0349,San Isidro,city,,,60735.0,America/Lima,Q2004827
+80967,Santiago de Surco,5687,LMA,Municipalidad Metropolitana de Lima,173,PE,Peru,-12.1478,-76.9937,Santiago de Surco,city,,,105076.0,America/Lima,Q833073
+80601,Cerro de Pasco,3686,PAS,Pasco,173,PE,Peru,-10.66748,-76.25668,Cerro de Pasco,adm1,,,58899.0,America/Lima,Q674320
+80605,Chaupimarca,3686,PAS,Pasco,173,PE,Peru,-10.40696,-76.46168,Chaupimarca,city,,,28666.0,America/Lima,Q765311
+80737,Oxapampa,3686,PAS,Pasco,173,PE,Peru,-10.5775,-75.40167,Oxapampa,adm2,,,12000.0,America/Lima,Q1014523
+80756,Paucartambo,3686,PAS,Pasco,173,PE,Peru,-10.77326,-75.81109,Paucartambo,adm3,,,4438.0,America/Lima,Q27194421
+80820,Provincia de Daniel Carrión,3686,PAS,Pasco,173,PE,Peru,-10.5,-76.5,Provincia de Daniel Carrión,city,,,5992.0,America/Lima,Q1944288
+80867,Provincia de Oxapampa,3686,PAS,Pasco,173,PE,Peru,-10.33333,-75.08333,Provincia de Oxapampa,city,,,87470.0,America/Lima,Q960169
+80875,Provincia de Pasco,3686,PAS,Pasco,173,PE,Peru,-10.66667,-76.08333,Provincia de Pasco,adm3,,,123015.0,America/Lima,Q976034
+80994,Tinyahuarco,3686,PAS,Pasco,173,PE,Peru,-10.76771,-76.27523,Tinyahuarco,city,,,5066.0,America/Lima,Q1974467
+81008,Villa Rica,3686,PAS,Pasco,173,PE,Peru,-10.73944,-75.26972,Villa Rica,adm3,,,7448.0,America/Lima,Q941183
+80567,Ayabaca,3697,PIU,Piura,173,PE,Peru,-4.63983,-79.71491,Ayabaca,adm3,,,5985.0,America/Lima,Q792713
+80577,Bernal,3697,PIU,Piura,173,PE,Peru,-5.45,-80.75,Bernal,adm3,,,6855.0,America/Lima,Q3344055
+80578,Buenos Aires,3697,PIU,Piura,173,PE,Peru,-5.26083,-79.96417,Buenos Aires,adm3,,,7932.0,America/Lima,Q3344055
+80596,Catacaos,3697,PIU,Piura,173,PE,Peru,-5.26667,-80.68333,Catacaos,adm3,,,57304.0,America/Lima,Q3312424
+80624,Chulucanas,3697,PIU,Piura,173,PE,Peru,-5.0925,-80.1625,Chulucanas,adm3,,,68835.0,America/Lima,Q1089449
+80638,El Alto,3697,PIU,Piura,173,PE,Peru,-4.26851,-81.21719,El Alto,city,,,9303.0,America/Lima,Q5582862
+80650,Huancabamba,3697,PIU,Piura,173,PE,Peru,-5.23861,-79.45056,Huancabamba,adm3,,,8553.0,America/Lima,Q2307821
+80686,La Breita,3697,PIU,Piura,173,PE,Peru,-4.25691,-80.88599,Brío,city,,,17693.0,America/Lima,Q2640092
+80687,La Huaca,3697,PIU,Piura,173,PE,Peru,-4.91167,-80.96,La Huaca,adm3,,,8468.0,America/Lima,Q2640092
+80691,La Unión,3697,PIU,Piura,173,PE,Peru,-5.40232,-80.74224,La Unión,city,,,34834.0,America/Lima,Q595441
+80698,Las Lomas,3697,PIU,Piura,173,PE,Peru,-4.65333,-80.24667,Las Lomas,adm3,,,9450.0,America/Lima,Q6488869
+80727,Máncora,3697,PIU,Piura,173,PE,Peru,-4.10778,-81.0475,Máncora,city,,,10547.0,America/Lima,Q529807
+80711,Marcavelica,3697,PIU,Piura,173,PE,Peru,-4.87778,-80.70528,Marca,adm3,,,29569.0,America/Lima,Q1026235
+80721,Morropon,3697,PIU,Piura,173,PE,Peru,-5.25,-80.0,Morrópono,city,,,786.0,America/Lima,Q384980
+80746,Paita,3697,PIU,Piura,173,PE,Peru,-5.08917,-81.11444,Camisa,adm3,,,56151.0,America/Lima,Q1026270
+80765,Piura,3697,PIU,Piura,173,PE,Peru,-5.19449,-80.63282,Piura,adm1,,,473025.0,America/Lima,Q223966
+80778,Provincia de Ayabaca,3697,PIU,Piura,173,PE,Peru,-4.75,-79.83333,Provincia de Ayabaca,adm3,,,119287.0,America/Lima,Q1367672
+80831,Provincia de Huancabamba,3697,PIU,Piura,173,PE,Peru,-5.5,-79.58333,Provincia de Huancabamba,adm3,,,111501.0,America/Lima,Q1422619
+80870,Provincia de Paita,3697,PIU,Piura,173,PE,Peru,-5.10189,-81.09695,Provincia de Paita,adm3,,,56151.0,America/Lima,Q2084618
+80879,Provincia de Piura,3697,PIU,Piura,173,PE,Peru,-5.21416,-80.40617,Provincia de Piura,city,,,799321.0,America/Lima,Q676572
+80896,Provincia de Sullana,3697,PIU,Piura,173,PE,Peru,-4.5,-80.66667,Provincia de Sullana,city,,,311454.0,America/Lima,Q612923
+80899,Provincia de Talara,3697,PIU,Piura,173,PE,Peru,-4.41667,-81.08333,Provincia de Talara,city,,,144150.0,America/Lima,Q2287241
+80927,Querecotillo,3697,PIU,Piura,173,PE,Peru,-4.83778,-80.64556,Querecotillo,adm3,,,26395.0,America/Lima,Q672921
+80937,Salinera Colán,3697,PIU,Piura,173,PE,Peru,-5.03333,-81.06667,Salinera Colán,city,,,14210.0,America/Lima,Q7403730
+80938,Salitral,3697,PIU,Piura,173,PE,Peru,-4.85722,-80.68111,Salitral,adm3,,,5385.0,America/Lima,Q7403730
+80973,Sechura,3697,PIU,Piura,173,PE,Peru,-5.55694,-80.82222,Sechura,adm3,,,23020.0,America/Lima,Q3236446
+80979,Sullana,3697,PIU,Piura,173,PE,Peru,-4.90389,-80.68528,Sullana,adm3,,,162434.0,America/Lima,Q510413
+80983,Talara,3697,PIU,Piura,173,PE,Peru,-4.57722,-81.27194,Talara,adm3,,,99600.0,America/Lima,Q723584
+80986,Tambo Grande,3697,PIU,Piura,173,PE,Peru,-4.92694,-80.34472,Tambo Grande,adm3,,,30033.0,America/Lima,Q723584
+81007,Vice,3697,PIU,Piura,173,PE,Peru,-5.41667,-80.78333,Vicio,adm3,,,15630.0,America/Lima,Q941183
+80566,Atuncolla,3682,PUN,Puno,173,PE,Peru,-15.68333,-70.15,Atudo,adm3,,,4555.0,America/Lima,Q1920509
+80569,Ayaviri,3682,PUN,Puno,173,PE,Peru,-14.88639,-70.58889,Ayaviri,adm3,,,19310.0,America/Lima,Q3344141
+80571,Azángaro,3682,PUN,Puno,173,PE,Peru,-14.90843,-70.19616,Azángaro,adm2,,,13290.0,America/Lima,Q2638284
+80637,Desaguadero,3682,PUN,Puno,173,PE,Peru,-16.56556,-69.04167,Desaguadero,adm3,,,5329.0,America/Lima,Q5582862
+80639,El Collao,3682,PUN,Puno,173,PE,Peru,-16.72641,-69.75515,El Collao,adm3,,,63878.0,America/Lima,Q2088833
+80645,Hacienda Huancane,3682,PUN,Puno,173,PE,Peru,-15.82327,-70.8854,Hacienda Huancane,city,,,7831.0,America/Lima,Q2117510
+80669,Ilave,3682,PUN,Puno,173,PE,Peru,-16.08333,-69.66667,Adicional,adm3,,,16033.0,America/Lima,Q3348236
+80683,Juli,3682,PUN,Puno,173,PE,Peru,-16.21667,-69.45,Julio,adm3,,,7309.0,America/Lima,Q2588438
+80684,Juliaca,3682,PUN,Puno,173,PE,Peru,-15.5,-70.13333,Juliaca,adm3,,,245675.0,America/Lima,Q696074
+80690,La Rinconada,3682,PUN,Puno,173,PE,Peru,-14.63126,-69.44638,La Rinconada,cities,,,29678.0,America/Lima,Q852929
+80695,Lampa,3682,PUN,Puno,173,PE,Peru,-15.35,-70.36667,Lámpara,adm3,,,4780.0,America/Lima,Q2638295
+80707,Macusani,3682,PUN,Puno,173,PE,Peru,-14.08333,-70.43333,Macusani,adm3,,,6044.0,America/Lima,Q3348229
+81023,Ñuñoa,3682,PUN,Puno,173,PE,Peru,-14.47788,-70.63583,Ñuñoa,city,,,4271.0,America/Lima,Q27194667
+80780,Provincia de Azángaro,3682,PUN,Puno,173,PE,Peru,-14.83333,-70.16667,Provincia de Azángaro,adm2,,,110392.0,America/Lima,Q2088824
+80794,Provincia de Carabaya,3682,PUN,Puno,173,PE,Peru,-13.83333,-70.25,Provincia de Carabaya,adm3,,,73322.0,America/Lima,Q1944216
+80807,Provincia de Chucuito,3682,PUN,Puno,173,PE,Peru,-16.60545,-69.35761,Provincia de Chucuito,adm3,,,89002.0,America/Lima,Q2088871
+80832,Provincia de Huancané,3682,PUN,Puno,173,PE,Peru,-15.16667,-69.58333,Provincia de Huancané,city,,,57651.0,America/Lima,Q1944227
+80854,Provincia de Lampa,3682,PUN,Puno,173,PE,Peru,-15.41667,-70.58333,Provincia de lámpara,adm3,,,40856.0,America/Lima,Q1944347
+80863,Provincia de Melgar,3682,PUN,Puno,173,PE,Peru,-14.75,-70.75,Provincia de Melgar,adm3,,,67138.0,America/Lima,Q1944356
+80881,Provincia de Puno,3682,PUN,Puno,173,PE,Peru,-16.0,-70.0,Provincia de Puno,adm3,,,219494.0,America/Lima,Q2084681
+80889,Provincia de Sandia,3682,PUN,Puno,173,PE,Peru,-13.83333,-69.33333,Provincia de Sandia,city,,,50742.0,America/Lima,Q1948135
+80922,Puno,3682,PUN,Puno,173,PE,Peru,-15.8422,-70.0199,Mucho,adm1,,,128637.0,America/Lima,Q232842
+80941,San Antonio De Putina,3682,PUN,Puno,173,PE,Peru,-14.71175,-69.61559,San Antonio De Putina,city,,,36113.0,America/Lima,Q1935565
+80957,San Roman,3682,PUN,Puno,173,PE,Peru,-15.83333,-70.5,San Roman,city,,,307417.0,America/Lima,Q1944337
+80961,Santa Lucía,3682,PUN,Puno,173,PE,Peru,-15.69788,-70.6061,Santa Lucía,city,,,4320.0,America/Lima,Q1944245
+80988,Taquile,3682,PUN,Puno,173,PE,Peru,-15.76667,-69.68333,Taquile,city,,,2000.0,America/Lima,Q723584
+81019,Yunguyo,3682,PUN,Puno,173,PE,Peru,-16.25,-69.08333,Yunguyo,adm3,,,16140.0,America/Lima,Q2306609
+80575,Bellavista,3694,SAM,San Martín,173,PE,Peru,-7.05614,-76.5911,Bellavista,adm3,,,15231.0,America/Lima,Q3344055
+80606,Chazuta,3694,SAM,San Martín,173,PE,Peru,-6.57087,-76.13753,Chazuta,adm3,,,9497.0,America/Lima,Q765311
+80640,El Dorado,3694,SAM,San Martín,173,PE,Peru,-6.56298,-76.7413,El Dorado,city,,,920.0,America/Lima,Q2084675
+80664,Huicungo,3694,SAM,San Martín,173,PE,Peru,-7.3186,-76.77556,Hublego,city,,,6757.0,America/Lima,Q629736
+80679,Jepelacio,3694,SAM,San Martín,173,PE,Peru,-6.11667,-76.95,Jepelación,adm3,,,7150.0,America/Lima,Q1229885
+80681,Juanjuí,3694,SAM,San Martín,173,PE,Peru,-7.17697,-76.72774,Juanjuí,city,,,37715.0,America/Lima,Q2671983
+80693,Lamas,3694,SAM,San Martín,173,PE,Peru,-6.41667,-76.53333,Lamas,adm3,,,13693.0,America/Lima,Q3139869
+80726,Moyobamba,3694,SAM,San Martín,173,PE,Peru,-6.03416,-76.97168,Moyobamba,adm1,,,50073.0,America/Lima,Q285672
+80759,Picota,3694,SAM,San Martín,173,PE,Peru,-6.92033,-76.33142,Picota,adm3,,,6697.0,America/Lima,Q3344087
+80827,Provincia de Huallaga,3694,SAM,San Martín,173,PE,Peru,-6.75664,-76.90143,Provincia de Huallaga,adm3,,,27506.0,America/Lima,Q731515
+80852,Provincia de Lamas,3694,SAM,San Martín,173,PE,Peru,-6.33333,-76.66667,Provincia de Lamas,adm3,,,81521.0,America/Lima,Q2281473
+80860,Provincia de Mariscal Cáceres,3694,SAM,San Martín,173,PE,Peru,-7.2739,-77.18216,Provincia de Mariscal Cáceres,city,,,64626.0,America/Lima,Q1947944
+80864,Provincia de Moyobamba,3694,SAM,San Martín,173,PE,Peru,-5.75,-77.25,Provincia de Moyobamba,city,,,122365.0,America/Lima,Q1948150
+80884,Provincia de Rioja,3694,SAM,San Martín,173,PE,Peru,-6.0,-77.41667,Provincia de Rioja,city,,,122544.0,America/Lima,Q2084648
+80887,Provincia de San Martín,3694,SAM,San Martín,173,PE,Peru,-6.58333,-76.16667,Provincia de San Martín,adm3,,,193095.0,America/Lima,Q588491
+80934,Rioja,3694,SAM,San Martín,173,PE,Peru,-6.05675,-77.16651,la Rioja,adm3,,,25057.0,America/Lima,Q3344069
+80969,Saposoa,3694,SAM,San Martín,173,PE,Peru,-6.93395,-76.77158,Saposoa,adm3,,,14894.0,America/Lima,Q3344065
+80976,Sisa,3694,SAM,San Martín,173,PE,Peru,-6.61085,-76.69302,Resto,city,,,9477.0,America/Lima,Q11034041
+80977,Soritor,3694,SAM,San Martín,173,PE,Peru,-6.13917,-77.10389,Soritor,adm3,,,10858.0,America/Lima,Q11034041
+80981,Tabalosos,3694,SAM,San Martín,173,PE,Peru,-6.35,-76.68333,Tabalosos,adm3,,,13879.0,America/Lima,Q510413
+80989,Tarapoto,3694,SAM,San Martín,173,PE,Peru,-6.50139,-76.36556,Tarapoto,adm3,,,0.0,America/Lima,Q927933
+80995,Tocache,3694,SAM,San Martín,173,PE,Peru,-8.1877,-76.52046,Tocache,city,,,29029.0,America/Lima,Q3344048
+81002,Uchiza,3694,SAM,San Martín,173,PE,Peru,-8.45917,-76.46333,Correr,adm3,,,20149.0,America/Lima,Q1677131
+80583,Calana,3696,TAC,Tacna,173,PE,Peru,-17.94167,-70.18694,Pantalones,adm3,,,875.0,America/Lima,Q205119
+80590,Candarave,3696,TAC,Tacna,173,PE,Peru,-17.26778,-70.24944,Candarave,adm3,,,3415.0,America/Lima,Q3344236
+80618,Chipispaya,3696,TAC,Tacna,173,PE,Peru,-17.4979,-70.21714,Chippaya,city,,,1932.0,America/Lima,Q26764442
+80626,Chuquitira,3696,TAC,Tacna,173,PE,Peru,-17.28891,-70.04363,Chuquitira,city,,,4220.0,America/Lima,Q3344173
+80668,Ilabaya,3696,TAC,Tacna,173,PE,Peru,-17.42083,-70.51333,Liberar,adm3,,,9492.0,America/Lima,Q840712
+80680,Jorge Basadre,3696,TAC,Tacna,173,PE,Peru,-17.57919,-70.73083,Jorge Basadre,city,,,10773.0,America/Lima,Q589047
+80897,Provincia de Tacna,3696,TAC,Tacna,173,PE,Peru,-17.83333,-70.5,Provincia de Tacna,city,,,,America/Lima,Q1355960
+80901,Provincia de Tarata,3696,TAC,Tacna,173,PE,Peru,-17.41667,-70.08333,Provincia de Tarata,adm3,,,,America/Lima,Q1410654
+80921,Pujocucho,3696,TAC,Tacna,173,PE,Peru,-17.15778,-70.35222,Pujocucho,city,,,4120.0,America/Lima,Q3504032
+80929,Quilahuani,3696,TAC,Tacna,173,PE,Peru,-17.31778,-70.25806,El tiene,adm3,,,3176.0,America/Lima,Q672921
+80982,Tacna,3696,TAC,Tacna,173,PE,Peru,-18.01465,-70.25362,Tacna,adm1,,,306363.0,America/Lima,Q272795
+80990,Tarata,3696,TAC,Tacna,173,PE,Peru,-17.47444,-70.03278,Calibre,adm3,,,3052.0,America/Lima,Q2588449
+80997,Totoral,3696,TAC,Tacna,173,PE,Peru,-17.4062,-70.36464,Totoral,adm3,,,1976.0,America/Lima,Q3344048
+80557,Aguas Verdes,3689,TUM,Tumbes,173,PE,Peru,-3.48139,-80.245,Aguas Verdes,adm3,,,9106.0,America/Lima,Q5660311
+80751,Papayal,3689,TUM,Tumbes,173,PE,Peru,-4.07771,-80.7369,Papayal,city,,,5484.0,America/Lima,Q2725364
+80813,Provincia de Contralmirante Villar,3689,TUM,Tumbes,173,PE,Peru,-4.0,-80.75,Provincia de Contralmirante Villar,city,,,5484.0,America/Lima,Q1422590
+80905,Provincia de Tumbes,3689,TUM,Tumbes,173,PE,Peru,-3.75,-80.41667,Provincia de Tumbes,city,,,154962.0,America/Lima,Q1479348
+80912,Provincia de Zarumilla,3689,TUM,Tumbes,173,PE,Peru,-3.66667,-80.25,Provincia de Zarumilla,adm3,,,48844.0,America/Lima,Q1477797
+80999,Tumbes,3689,TUM,Tumbes,173,PE,Peru,-3.56694,-80.45153,Tumbes,adm1,,,96946.0,America/Lima,Q827640
+81021,Zarumilla,3689,TUM,Tumbes,173,PE,Peru,-3.50306,-80.27306,Zarumilla,adm3,,,16907.0,America/Lima,Q2877763
+81022,Zorritos,3689,TUM,Tumbes,173,PE,Peru,-3.68046,-80.67819,Zorritos,adm3,,,12261.0,America/Lima,Q3317432
+80565,Atalaya,3684,UCA,Ucayali,173,PE,Peru,-10.3898,-73.21977,Atalaya,city,,,0.0,America/Lima,Q1920509
+80589,Campoverde,3684,UCA,Ucayali,173,PE,Peru,-8.47533,-74.80709,Campoverde,city,,,8945.0,America/Lima,Q34789572
+80744,Padre Abad,3684,UCA,Ucayali,173,PE,Peru,-8.7968,-75.4285,Padre Abad,adm3,,,60107.0,America/Lima,Q548556
+80815,Provincia de Coronel Portillo,3684,UCA,Ucayali,173,PE,Peru,-9.5,-73.33333,Provincia de Coronel Portillo,city,,,384168.0,America/Lima,Q579906
+80913,Pucallpa,3684,UCA,Ucayali,173,PE,Peru,-8.37915,-74.55387,Pucallpa,adm1,,,326040.0,America/Lima,Q217071
+80925,Purus,3684,UCA,Ucayali,173,PE,Peru,-10.37331,-71.58231,Chile,city,,,2860.0,America/Lima,Q672921

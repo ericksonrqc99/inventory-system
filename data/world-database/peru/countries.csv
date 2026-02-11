@@ -1,0 +1,2 @@
+id,name,iso3,iso2,numeric_code,phonecode,capital,currency,currency_name,currency_symbol,tld,native,population,gdp,region,region_id,subregion,subregion_id,nationality,area_sq_km,postal_code_format,postal_code_regex,timezones,latitude,longitude,emoji,emojiU,wikiDataId
+173,Peru,PER,PE,604,51,Lima,PEN,Peruvian sol,S/.,.pe,Perú,34350244.0,303293.0,Americas,2.0,South America,8.0,Peruvian,1285220,#####,^(\d{5})$,"[{zoneName:'America\/Lima',gmtOffset:-18000,gmtOffsetName:'UTC-05:00',abbreviation:'PET',tzName:'Peru Time'}]",-10.0,-76.0,🇵🇪,U+1F1F5 U+1F1EA,Q419
