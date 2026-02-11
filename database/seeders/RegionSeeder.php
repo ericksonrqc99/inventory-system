@@ -13,7 +13,7 @@ class RegionSeeder extends Seeder
      */
     public function run(): void
     {
-         $csvFile = fopen(base_path('data/world-database/peru/states.csv'), 'r');
+        $csvFile = fopen(base_path('data/world-database/peru/states.csv'), 'r');
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ',')) !== false) {
             if (! $firstline) {
