@@ -11,7 +11,7 @@ class City extends Model
         'native',
         'type',
     ];
-
+    
     public function region()
     {
         return $this->belongsTo(Region::class);
