@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('regions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('country_id')->constrained()->onDelete('restrict');
+            $table->string('name', 70);
             $table->string('fips_code', 5)->unique()->nullable();
             $table->string('type', 15);
-            $table->string('native', 50);
             $table->timestamps();
         });
     }
