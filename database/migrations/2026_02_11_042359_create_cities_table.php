@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('state_id')->constrained()->onDelete('restrict');
+            $table->string('native', 70);
+            $table->string('type', 30);
             $table->timestamps();
         });
     }
