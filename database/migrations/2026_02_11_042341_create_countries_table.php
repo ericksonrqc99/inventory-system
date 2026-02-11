@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
+            $table->string('iso2', 10)->unique();
+            $table->string('phonecode', 10)->unique();
+            $table->string('capital', 50)->unique();
+            $table->string('currency', 10);
+            $table->string('currency_symbol', 10);
+            $table->string('native', 50)->unique();
+            $table->json('timezones');
             $table->timestamps();
         });
     }
